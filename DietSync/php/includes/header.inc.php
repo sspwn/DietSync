@@ -19,11 +19,8 @@
                 <div class="col-10">
                     <i class="btn btn-lg text-white bi bi-list" id="header-toggle"></i>
                 </div>
-                <div class="col-1 text-white my-2 py-1">
+                <div class="col-2 text-white my-2 py-1">
                     <span>Usuário</span>
-                </div>
-                <div class="col-1">
-                    <i class="btn btn-lg text-white bi-box-arrow-left"></i>
                 </div>
             </div>
         </div>

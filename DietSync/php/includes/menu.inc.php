@@ -15,7 +15,7 @@
 
                     <a href="registrar-dieta.php
                     " class="nav_link <?php if ($page == 'registrar-dieta') echo 'active'; ?>">
-                        <i class="bi bi-clipboard-plus"></i>
+                        <i class="bi bi-egg-fried"></i>
                         <span class="nav_name">Registrar Dieta</span>
                     </a>
 
@@ -27,7 +27,7 @@
 
                     <a href="evolucao.php
                     " class="nav_link <?php if ($page == 'evolucao') echo 'active'; ?>">
-                        <i class="bi bi-person-plus"></i>
+                        <i class="bi bi-graph-up"></i>
                         <span class="nav_name">Evolução</span>
                     </a>
 
@@ -40,10 +40,10 @@
                 </div>
             </div>
 
-            <!-- <a href="#" class="nav_link">
-                <i class="bi bi-gear-fill"></i>
+            <a href="#" class="nav_link">
+                <i class="bi bi-gear"></i>
                 <span class="nav_name">Configuração</span>
-            </a> -->
+            </a>
 
         </nav>
     </div>
