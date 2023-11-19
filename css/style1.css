@@ -127,7 +127,7 @@ body {
     padding: 1rem 1.5rem;
     padding-left: calc(1rem * 3.5);
     border-radius: 100px;
-    width: 100%;
+    width: 90%;
     transition: background .5s;
 }
 

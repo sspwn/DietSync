@@ -1,6 +1,6 @@
 <?php
 $titulo = "Dieta";
-$page = 'dieta';
+$page = 'dietagit ';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/dieta.cont.class.php';
