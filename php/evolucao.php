@@ -10,7 +10,7 @@ $evolucao = new Evolucao("dietsync", "localhost", "root", "");
 // Verifica se o formulário foi submetido
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Define o ID do usuário (você pode obter isso de onde precisar)
-  $id_usuario = 0;
+  $id_usuario = 1;
 
   // Obtém os dados do formulário
   $data = addslashes($_POST['data']);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <tbody>
       <!-- Aqui vão aparecer as medidas antigas -->
       <?php
-      $id_usuario = 0;
+      $id_usuario = 1;
       $medicoesAnteriores = $evolucao->dadosEvolucao($id_usuario);
       foreach ($medicoesAnteriores as $medicao) {
         echo "<tr>";
