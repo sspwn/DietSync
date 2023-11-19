@@ -15,7 +15,7 @@
     <div class="login-card-container">
         <div class="login-card">
             <div class="login-card-logo">
-                <img src="logo.png" alt="logo">
+                <img src="../img/vertical_2.png" alt="logo">
             </div>
             <div class="login-card-header">
                 <h1>Sign In</h1>
