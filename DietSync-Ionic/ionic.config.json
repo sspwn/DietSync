@@ -1,0 +1,7 @@
+{
+  "name": "DietSync",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Evolução</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Medições Atuais</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <!-- Campo de Peso -->
+        <ion-item>
+          <ion-label position="floating">Peso (kg)</ion-label>
+          <ion-input type="number" name="peso"></ion-input>
+        </ion-item>
+
+        <!-- Campo de Altura -->
+        <ion-item>
+          <ion-label position="floating">Altura (cm)</ion-label>
+          <ion-input type="number" name="altura"></ion-input>
+        </ion-item>
+
+        <!-- Campo de Circunferência da Cintura -->
+        <ion-item>
+          <ion-label position="floating">Circunferência da Cintura (cm)</ion-label>
+          <ion-input type="number" name="cintura"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Histórico de Medições</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <!-- Adicione uma lista de medições anteriores com datas para rastreamento -->
+        <ion-item>
+          <ion-label>Data: 01/10/2023</ion-label>
+          <ion-note slot="end">Peso: 70 kg, Altura: 175 cm, Cintura: 85 cm</ion-note>
+        </ion-item>
+
+        <!-- Adicione mais itens para medições anteriores -->
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

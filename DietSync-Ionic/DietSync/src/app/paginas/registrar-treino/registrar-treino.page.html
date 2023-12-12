@@ -1,0 +1,44 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-title>Registrar Treino</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Data</ion-label>
+      <ion-input type="date" name="data"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-select name="tipo">
+        <ion-select-option value="musculacao">Musculação</ion-select-option>
+        <ion-select-option value="cardio">Cardio</ion-select-option>
+        <ion-select-option value="funcional">Funcional</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Exercícios</ion-label>
+      <ion-textarea type="text" name="exercicios"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Repetições</ion-label>
+      <ion-input type="number" name="repeticoes"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Séries</ion-label>
+      <ion-input type="number" name="series"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" color="primary">Registrar</ion-button>
+</ion-content>
+

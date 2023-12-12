@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Registrar Dieta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Data</ion-label>
+      <ion-input type="date" name="data"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Refeição</ion-label>
+      <ion-select name="refeicao">
+        <ion-select-option value="cafe-da-manha">Café da manhã</ion-select-option>
+        <ion-select-option value="almoco">Almoço</ion-select-option>
+        <ion-select-option value="jantar">Jantar</ion-select-option>
+        <ion-select-option value="lanche-da-manha">Lanche da manhã</ion-select-option>
+        <ion-select-option value="lanche-da-tarde">Lanche da tarde</ion-select-option>
+        <ion-select-option value="lanche-da-noite">Lanche da noite</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Alimentos</ion-label>
+      <ion-textarea name="alimentos" rows="4"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button expand="full" color="primary">Registrar</ion-button>
+</ion-content>
