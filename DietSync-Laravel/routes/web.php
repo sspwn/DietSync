@@ -25,7 +25,7 @@ Route::get('/registrar-usuario', function () {
     return view('registrar-usuario')->with('page', 'Registrar Usuário');
 })->name('registrar-usuario');
 
-Route::post('registrar-usuario', [RegistrarUserController::class, 'RegistroUsuario']);
+Route::post('registrar-user', [RegistrarUserController::class, 'RegistroUsuario']);
 
 Route::get('/index', function () {
     return view('index')->with('page', 'menu');

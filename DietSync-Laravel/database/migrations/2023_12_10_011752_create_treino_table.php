@@ -21,7 +21,7 @@ class CreateTreinoTable extends Migration
             $table->unsignedBigInteger('FK_usuario_id_usuario');
             $table->timestamps();
 
-            $table->foreign('FK_usuario_id_usuario')->references('id_user')->on('users')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('FK_usuario_id_usuario')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

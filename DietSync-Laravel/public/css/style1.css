@@ -34,11 +34,11 @@ body {
 
 /* Login Card Logo */
 .login-card-logo {
-    margin-bottom: 2rem;
+    margin-bottom: rem;
 }
 
 .login-card-logo img {
-    width: 60px;
+    width: 200px;
 }
 /* ---------- */
 

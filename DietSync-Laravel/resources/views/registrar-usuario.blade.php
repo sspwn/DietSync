@@ -21,7 +21,7 @@
                 <h1>Criar Conta</h1>
                 <div>Preencha os detalhes para criar uma conta</div>
             </div>
-            <form class="login-card-form" method="POST" action="{{ route('registrar-usuario') }}">
+            <form class="login-card-form" method="POST" action="registrar-user">
                 @csrf
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">person</span>
