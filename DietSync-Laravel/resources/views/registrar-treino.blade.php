@@ -3,7 +3,8 @@
 @section('conteudo')
 <div class="container" id="main">
     <h1>Registrar treino</h1>
-    <form method="post">
+    <form method="post" action="{{ route('registro.treino') }}">
+        @csrf
         <div class="mb-3">
             <label for="data" class="form-label">Data</label>
             <input type="date" class="form-control" id="data" name="data">
@@ -17,7 +18,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="exercicios" class="form-label">Exercícios</label>
+            <label for="exercicios" class="form-label">Exercícios (separados por vírgula)</label>
             <input type="text" class="form-control" id="exercicios" name="exercicios">
         </div>
         <div class="mb-3">

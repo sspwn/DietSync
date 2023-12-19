@@ -27,48 +27,47 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-
                 <a href="{{ url('index') }}" class="nav_logo">
                     <span class="nav_logo-name">Diet Sync</span>
                 </a>
 
                 <div class="nav_list">
-                    <a href="{{ url('index') }}" class="nav_link @if($page == 'menu') active @endif">
+                    <a href="{{ url('index') }}" class="nav_link @if(Request::is('index')) active @endif">
                         <i class="bi bi-house"></i>
                         <span class="nav_name">Home</span>
                     </a>
 
-                    <a href="{{ url('registrar-dieta') }}" class="nav_link @if($page == 'registrar-dieta') active @endif">
+                    <a href="{{ url('registrar-dieta') }}" class="nav_link @if(Request::is('registrar-dieta')) active @endif">
                         <i class="bi bi-egg-fried"></i>
                         <span class="nav_name">Registrar Dieta</span>
                     </a>
 
-                    <a href="{{ url('registrar-treino') }}" class="nav_link @if($page == 'registro-treino') active @endif">
+                    <a href="{{ url('registrar-treino') }}" class="nav_link @if(Request::is('registrar-treino')) active @endif">
                         <i class="bi bi-clipboard-heart"></i>
                         <span class="nav_name">Registrar Treino</span>
                     </a>
 
-                    <a href="{{ url('registrar-receita') }}" class="nav_link @if($page == 'registrar-receitas') active @endif">
+                    <a href="{{ url('registrar-receita') }}" class="nav_link @if(Request::is('registrar-receita')) active @endif">
                         <i class="bi bi-clipboard-plus"></i>
                         <span class="nav_name">Registrar Receitas</span>
                     </a>
 
-                    <a href="{{ url('dieta') }}" class="nav_link @if($page == 'dieta') active @endif">
+                    <a href="{{ url('exibir-dieta') }}" class="nav_link @if(Request::is('exibir-dieta')) active @endif">
                         <i class="bi bi-ui-checks-grid"></i>
                         <span class="nav_name">Dieta</span>
                     </a>
 
-                    <a href="{{ url('treinos') }}" class="nav_link @if($page == 'treino') active @endif">
+                    <a href="{{ url('treinos') }}" class="nav_link @if(Request::is('treinos')) active @endif">
                         <i class="bi bi-heart-pulse-fill"></i>
                         <span class="nav_name">Treinos</span>
                     </a>
 
-                    <a href="{{ url('evolucao') }}" class="nav_link @if($page == 'evolucao') active @endif">
+                    <a href="{{ url('evolucao') }}" class="nav_link @if(Request::is('evolucao')) active @endif">
                         <i class="bi bi-graph-up-arrow"></i>
                         <span class="nav_name">Evolução</span>
                     </a>
 
-                    <a href="{{ url('receitas') }}" class="nav_link @if($page == 'receitas') active @endif">
+                    <a href="{{ url('receitas') }}" class="nav_link @if(Request::is('receitas')) active @endif">
                         <i class="bi bi-journal-check"></i>
                         <span class="nav_name">Receitas</span>
                     </a>
@@ -80,7 +79,6 @@
                 <i class="bi bi-gear"></i>
                 <span class="nav_name">Configuração</span>
             </a>
-
         </nav>
     </div>
 
@@ -93,7 +91,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

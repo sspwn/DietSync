@@ -16,6 +16,11 @@ class CreateDietaTable extends Migration
             $table->float('proteinas');
             $table->float('carboidratos');
             $table->float('gorduras');
+            $table->date('data_dieta');
+            $table->string('refeicao');
+            $table->text('alimentos');
+            $table->integer('quantidade');
+            $table->text('observacoes')->nullable();
             $table->unsignedBigInteger('FK_usuario_id_usuario');
             $table->timestamps();
 

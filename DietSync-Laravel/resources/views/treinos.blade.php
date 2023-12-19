@@ -1,35 +1,36 @@
-@extends('layouts.header')
-@section('title', 'Treinos')
-@section('conteudo')
-<div class="container" id="main">
-    <h1>Receitas Disponíveis</h1>
+<!-- resources/views/treinos.blade.php -->
 
-    <?php
-    $treinos = $treino->Treinos();
-    if ($treinos) {
-        echo "<table class='table table-bordered'>
+@extends('layouts.header')
+
+@section('title', 'Treinos')
+
+@section('conteudo')
+    <div class="container" id="main">
+        <h1>Treinos Disponíveis</h1>
+
+        @if($treinos->count() > 0)
+            <table class="table table-hover table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nome do Treino</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>";
-
-        foreach ($treinos as $treino) {
-            echo "<tr>
-                    <td>" . $treino['nome_treino'] . "</td>
-                    <td>
-                        <a href='pagina_treino.php?id=" . $treino['id_treino'] . "' class='btn btn-primary'>Ver Detalhes</a>
-                    </td>
-                  </tr>";
-        }
-
-        echo "</tbody>
-              </table>";
-    } else {
-        echo "<p>Nenhum treino encontrado.</p>";
-    }
-    ?>
-</div>
+                <tbody>
+                    @foreach($treinos as $treino)
+                        <tr>
+                            <td>{{ $treino->data }}</td>
+                            <td>{{ $treino->tipo }}</td>
+                            <td>
+                                <a href="{{ route('treinos.show', ['id' => $treino->id]) }}" class="btn btn-primary">Ver Treino</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Nenhum treino disponível.</p>
+        @endif
+    </div>
 @endsection

@@ -9,7 +9,7 @@ class Treino extends Model
 {
     protected $table = 'treino';
 
-    protected $primaryKey = 'id_treino';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'objetivo',

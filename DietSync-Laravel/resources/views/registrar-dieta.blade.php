@@ -5,7 +5,8 @@
 <div class="container" id="main">
     <h2>Formulário de Dieta</h2>
 
-    <form method="post">
+    <form method="post" action="{{ url('/registrar-dieta/store') }}">
+        @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome_dieta">Nome da Dieta</label>

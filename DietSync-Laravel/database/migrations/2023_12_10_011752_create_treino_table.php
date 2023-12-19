@@ -10,18 +10,17 @@ class CreateTreinoTable extends Migration
     public function up()
     {
         Schema::create('treino', function (Blueprint $table) {
-            $table->id('id_treino');
+            $table->id();
+            $table->date('data');
+            $table->string('tipo');
+            $table->text('exercicios');
+            $table->integer('repeticoes');
+            $table->integer('series');
             $table->string('objetivo');
-            $table->integer('duracao');
-            $table->integer('frequencia');
-            $table->string('exercicios');
-            $table->integer('serie');
-            $table->integer('repeticao');
+            $table->string('duracao');
+            $table->string('frequencia');
             $table->string('nome_treino');
-            $table->unsignedBigInteger('FK_usuario_id_usuario');
             $table->timestamps();
-
-            $table->foreign('FK_usuario_id_usuario')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

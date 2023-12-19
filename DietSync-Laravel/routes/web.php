@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrarUserController;
+use App\Http\Controllers\DietaController;
+use App\Http\Controllers\ReceitaController;
+use App\Http\Controllers\TreinoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +34,7 @@ Route::get('/index', function () {
     return view('index')->with('page', 'menu');
 })->name('index');
 
+Route::post('/registrar-dieta/store', [DietaController::class, 'registrarDieta']);
 Route::get('/registrar-dieta', function () {
     return view('registrar-dieta')->with('page', 'registrar-dieta');
 })->name('registrar-dieta');
@@ -38,24 +42,25 @@ Route::get('/registrar-dieta', function () {
 Route::get('/registrar-treino', function () {
     return view('registrar-treino')->with('page', 'registro-treino');
 })->name('registrar-treino');
+Route::post('/registro-treino', [TreinoController::class, 'registrarTreino'])->name('registro.treino');
 
 Route::get('/registrar-receita', function () {
     return view('registrar-receita')->with('page', 'registrar-receitas');
 })->name('registrar-receita');
+Route::post('/registro-receita', [ReceitaController::class, 'registrarReceita']);
 
-Route::get('/dieta', function () {
-    return view('dieta')->with('page', 'dieta');
-})->name('dieta');
+Route::get('/exibir-dieta', [DietaController::class, 'exibirDieta'])->name('exibir.dieta');
 
-Route::get('/treinos', function () {
+Route::get('/pagina-treino', function () {
     return view('treinos')->with('page', 'treino');
-})->name('treinos');
+})->name('pagina-treino');
 
 Route::get('/evolucao', function () {
     return view('evolucao')->with('page', 'evolucao');
 })->name('evolucao');
 
-Route::get('/receitas', function () {
-    return view('receitas')->with('page', 'receitas');
-})->name('receitas');
+Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
+Route::get('/treinos/{id}', [TreinoController::class, 'show'])->name('treinos.show');
 
+Route::get('/receitas', [ReceitaController::class, 'index'])->name('receitas');
+Route::get('/pagina_receita/{id}', [ReceitaController::class, 'show'])->name('receitas.show');

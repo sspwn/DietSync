@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     protected $table = 'users'; // Nome da tabela no banco de dados
 
-    protected $primaryKey = 'id_usuario'; // Nome da chave primária
+    protected $primaryKey = 'id'; // Nome da chave primária
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'meta',
-        'nome_usuario',
+        'name',
         'email',
         'password',
         'data_nasc',

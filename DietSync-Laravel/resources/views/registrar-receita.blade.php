@@ -4,7 +4,8 @@
 
 <div class="container" id="main">
     <h1>Registrar Receita</h1>
-    <form method="POST">
+    <form method="POST" action="{{ url('/registro-receita') }}">
+        @csrf
         <div class="mb-3">
             <label for="nome_receita" class="form-label">Nome da Receita</label>
             <input type="text" class="form-control" id="nome_receita" name="nome_receita">

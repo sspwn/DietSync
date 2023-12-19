@@ -2,48 +2,30 @@
 @section('title', 'Dieta')
 @section('conteudo')
 <div class="container" id="main">
-    <h2>Plano de Refeições do Dia</h2>
+    <h2>Refeições do dia</h2>
 
-    <div class="list-group mt-4">
-        <a href="#breakfast" class="list-group-item list-group-item-action" data-toggle="collapse">
-            Café da Manhã
-        </a>
-        <div class="collapse" id="breakfast">
-            <div class="card card-body">
-                <ul>
-                    <li>Ovos</li>
-                    <li>Torradas</li>
-                    <li>Frutas</li>
-                </ul>
+    @foreach ($dietas as $dieta)
+        <div class="list-group mt-4">
+            <a href="#{{ $dieta->refeicao }}" class="list-group-item list-group-item-action" data-toggle="collapse">
+                {{ $dieta->refeicao }}
+            </a>
+            <div class="collapse w-100" id="{{ $dieta->refeicao }}">
+                <div class="card card-body">
+                    <ul>
+                        <li><strong>Nome da Dieta:</strong> {{ $dieta->nome_dieta }}</li>
+                        <li><strong>Tipo de Dieta:</strong> {{ $dieta->tipo_dieta }}</li>
+                        <li><strong>Calorias:</strong> {{ $dieta->calorias }}</li>
+                        <li><strong>Proteínas:</strong> {{ $dieta->proteinas }}</li>
+                        <li><strong>Carboidratos:</strong> {{ $dieta->carboidratos }}</li>
+                        <li><strong>Gorduras:</strong> {{ $dieta->gorduras }}</li>
+                        <li><strong>Data da Dieta:</strong> {{ $dieta->data_dieta }}</li>
+                        <li><strong>Alimentos:</strong> {{ $dieta->alimentos }}</li>
+                        <li><strong>Quantidade:</strong> {{ $dieta->quantidade }}</li>
+                        <li><strong>Observações:</strong> {{ $dieta->observacoes }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <a href="#lunch" class="list-group-item list-group-item-action" data-toggle="collapse">
-            Almoço
-        </a>
-        <div class="collapse" id="lunch">
-            <div class="card card-body">
-                <ul>
-                    <li>Arroz</li>
-                    <li>Feijão</li>
-                    <li>Frango grelhado</li>
-                    <li>Salada</li>
-                </ul>
-            </div>
-        </div>
-
-        <a href="#dinner" class="list-group-item list-group-item-action" data-toggle="collapse">
-            Jantar
-        </a>
-        <div class="collapse" id="dinner">
-            <div class="card card-body">
-                <ul>
-                    <li>Sopa de legumes</li>
-                    <li>Peixe cozido</li>
-                    <li>Legumes no vapor</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
 @endsection
