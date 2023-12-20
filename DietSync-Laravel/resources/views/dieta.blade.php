@@ -19,7 +19,17 @@
                         <li><strong>Carboidratos:</strong> {{ $dieta->carboidratos }}</li>
                         <li><strong>Gorduras:</strong> {{ $dieta->gorduras }}</li>
                         <li><strong>Data da Dieta:</strong> {{ $dieta->data_dieta }}</li>
-                        <li><strong>Alimentos:</strong> {{ $dieta->alimentos }}</li>
+                        <li><strong>Alimentos:</strong>
+                            @if($dieta->alimentos)
+                                <ul>
+                                    @foreach(json_decode($dieta->alimentos) as $alimento)
+                                        <li>{{ $alimento }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                Nenhum alimento listado.
+                            @endif
+                        </li>
                         <li><strong>Quantidade:</strong> {{ $dieta->quantidade }}</li>
                         <li><strong>Observações:</strong> {{ $dieta->observacoes }}</li>
                     </ul>

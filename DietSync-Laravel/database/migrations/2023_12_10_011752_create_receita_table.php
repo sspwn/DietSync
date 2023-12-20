@@ -11,7 +11,7 @@ class CreateReceitaTable extends Migration
         Schema::create('receita', function (Blueprint $table) {
             $table->id('id_receitas');
             $table->string('nome_receita');
-            $table->string('ingredientes');
+            $table->text('ingredientes');
             $table->string('modo_preparo');
             $table->float('calorias');
             $table->float('proteinas');

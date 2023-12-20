@@ -5,28 +5,33 @@
     <h1>Detalhes da Receita</h1>
 
     @if(isset($receita))
-    <table class='table table-bordered'>
-        <thead>
-            <tr>
-                <th>Nome da Receita</th>
-                <th>Ingredientes</th>
-                <th>Modo de Preparo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $receita['nome_receita'] }}</td>
-                <td>{{ $receita['ingredientes'] }}</td>
-                <td>{{ $receita['modo_preparo'] }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>Informações Nutricionais</h2>
+    <div>
+        <strong>Nome da Receita:</strong> {{ $receita['nome_receita'] }}
+    </div>
+    <div>
+        <strong>Ingredientes:</strong>
+        @if($receita['ingredientes'])
+            <ul>
+                @foreach(json_decode($receita['ingredientes']) as $ingrediente)
+                    <li>{{ $ingrediente }}</li>
+                @endforeach
+            </ul>
+        @else
+            Nenhum ingrediente listado.
+        @endif
+    </div>
+    <div>
+        <strong>Modo de Preparo:</strong> {{ $receita['modo_preparo'] }}
+    </div>
+
+    <div>
+        <strong>Informações Nutricionais</strong>
+    </div>
     <ul>
-        <li>Calorias: {{ $receita['calorias'] }}</li>
-        <li>Proteínas: {{ $receita['proteinas'] }}</li>
-        <li>Carboidratos: {{ $receita['carboidratos'] }}</li>
-        <li>Gordura: {{ $receita['gordura'] }}</li>
+        <li><strong>Calorias:</strong> {{ $receita['calorias'] }}</li>
+        <li><strong>Proteínas:</strong> {{ $receita['proteinas'] }}</li>
+        <li><strong>Carboidratos:</strong> {{ $receita['carboidratos'] }}</li>
+        <li><strong>Gordura:</strong> {{ $receita['gordura'] }}</li>
     </ul>
     @else
     <p>Receita não encontrada ou dados incompletos.</p>

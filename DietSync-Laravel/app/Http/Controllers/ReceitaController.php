@@ -8,21 +8,26 @@ use App\Models\Receita;
 class ReceitaController extends Controller
 {
     public function registrarReceita(Request $request)
-    {
-        $data = $request->validate([
-            'nome_receita' => 'required',
-            'ingredientes' => 'required',
-            'modo_preparo' => 'required',
-            'calorias' => 'required|numeric',
-            'proteinas' => 'required|numeric',
-            'carboidratos' => 'required|numeric',
-            'gordura' => 'required|numeric',
-        ]);
+{
+    $data = $request->validate([
+        'nome_receita' => 'required',
+        'ingredientes' => 'required',
+        'modo_preparo' => 'required',
+        'calorias' => 'required|numeric',
+        'proteinas' => 'required|numeric',
+        'carboidratos' => 'required|numeric',
+        'gordura' => 'required|numeric',
+    ]);
 
-        Receita::create($data);
+    // Transforma a string de ingredientes em um array e converte para JSON
+    $ingredientes = explode(',', $data['ingredientes']);
+    $data['ingredientes'] = json_encode($ingredientes);
 
-        return redirect()->back()->with('success', 'Receita registrada com sucesso!');
-    }
+    Receita::create($data);
+
+    return redirect()->back()->with('success', 'Receita registrada com sucesso!');
+}
+
 
     public function index()
     {

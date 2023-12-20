@@ -18,7 +18,11 @@ class DietaController extends Controller
         $dieta->gorduras = $request->input('gorduras');
         $dieta->data_dieta = $request->input('data_dieta');
         $dieta->refeicao = $request->input('refeicao');
-        $dieta->alimentos = $request->input('alimentos');
+
+        // Transforma a string de alimentos em um array e converte para JSON
+        $alimentos = explode(',', $request->input('alimentos'));
+        $dieta->alimentos = json_encode($alimentos);
+
         $dieta->quantidade = $request->input('quantidade');
         $dieta->observacoes = $request->input('observacoes');
 
