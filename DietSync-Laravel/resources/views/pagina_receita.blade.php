@@ -1,9 +1,5 @@
-<!-- resources/views/receitas/detalhes.blade.php -->
-
 @extends('layouts.header')
-
 @section('title', 'Detalhes da Receita')
-
 @section('conteudo')
 <div class="container" id="main">
     <h1>Detalhes da Receita</h1>

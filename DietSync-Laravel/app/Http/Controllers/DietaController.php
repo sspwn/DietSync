@@ -24,7 +24,7 @@ class DietaController extends Controller
 
         $dieta->save();
 
-        return redirect()->route('dieta')->with('success', 'Dieta cadastrada com sucesso!');
+        return redirect()->route('registrar-dieta')->with('success', 'Dieta cadastrada com sucesso!');
     }
 
     public function exibirDieta()

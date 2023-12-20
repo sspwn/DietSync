@@ -1,5 +1,3 @@
-<!-- resources/views/treino.blade.php -->
-
 @extends('layouts.header')
 @section('title', 'Detalhes do Treino')
 @section('conteudo')

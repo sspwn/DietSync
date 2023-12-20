@@ -15,25 +15,21 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Aqui vão aparecer as medidas antigas -->
-      <?php
-      $id_usuario = 1;
-      $medicoesAnteriores = $evolucao->dadosEvolucao($id_usuario);
-      foreach ($medicoesAnteriores as $medicao) {
-        echo "<tr>";
-        echo "<td>{$medicao['data_medicao']}</td>";
-        echo "<td>{$medicao['peso']}</td>";
-        echo "<td>{$medicao['altura']}</td>";
-        echo "<td>{$medicao['cintura']}</td>";
-        echo "</tr>";
-      }
-      ?>
+      @foreach($evolucoes as $evolucao)
+        <tr>
+          <td>{{ $evolucao->data }}</td>
+          <td>{{ $evolucao->peso }}</td>
+          <td>{{ $evolucao->altura }}</td>
+          <td>{{ $evolucao->cintura }}</td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
-
+  
   <h2>Partiu Medir Novamente</h2>
 
-  <form method="post">
+  <form method="post" action="{{ route('registrar.medicao') }}">
+    @csrf
     <div class="form-group">
       <label for="dataMedicao">Data da Medição</label>
       <input type="date" class="form-control" id="data" name="data" required>

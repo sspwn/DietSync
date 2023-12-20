@@ -13,7 +13,7 @@ class CreateContemTable extends Migration
             $table->unsignedBigInteger('FK_dieta_id_dieta')->nullable();
 
             $table->foreign('FK_receita_id_receitas')->references('id_receitas')->on('receita')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('FK_dieta_id_dieta')->references('id_dieta')->on('dieta')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('FK_dieta_id_dieta')->references('id_dieta')->on('dietas')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

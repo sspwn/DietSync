@@ -8,7 +8,7 @@ class CreateDietaTable extends Migration
 {
     public function up()
     {
-        Schema::create('dieta', function (Blueprint $table) {
+        Schema::create('dietas', function (Blueprint $table) {
             $table->id('id_dieta');
             $table->string('nome_dieta');
             $table->string('tipo_dieta');
@@ -21,10 +21,10 @@ class CreateDietaTable extends Migration
             $table->text('alimentos');
             $table->integer('quantidade');
             $table->text('observacoes')->nullable();
-            $table->unsignedBigInteger('FK_usuario_id_usuario');
+            // $table->unsignedBigInteger('FK_usuario_id_usuario');
             $table->timestamps();
 
-            $table->foreign('FK_usuario_id_usuario')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
+            // $table->foreign('FK_usuario_id_usuario')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

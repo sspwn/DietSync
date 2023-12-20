@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrarUserController;
 use App\Http\Controllers\DietaController;
+use App\Http\Controllers\EvolucaoController;
 use App\Http\Controllers\ReceitaController;
 use App\Http\Controllers\TreinoController;
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,8 @@ Route::get('/pagina-treino', function () {
     return view('treinos')->with('page', 'treino');
 })->name('pagina-treino');
 
-Route::get('/evolucao', function () {
-    return view('evolucao')->with('page', 'evolucao');
-})->name('evolucao');
+Route::get('/evolucao', [EvolucaoController::class, 'index'])->name('evolucao');
+Route::post('/registrar-medicao', [EvolucaoController::class, 'store'])->name('registrar.medicao');
 
 Route::get('/treinos', [TreinoController::class, 'index'])->name('treinos');
 Route::get('/treinos/{id}', [TreinoController::class, 'show'])->name('treinos.show');
