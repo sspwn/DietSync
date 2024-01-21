@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST["data"];
     $tipo = $_POST["tipo"];
     $exercicios = $_POST["exercicios"];
+    $exercicios_json = explode(',', $_POST['exercicios']);
+    $exercicios = json_encode($exercicios_json);
     $repeticoes = $_POST["repeticoes"];
     $series = $_POST["series"];
     $objetivo = $_POST["objetivo"];
@@ -38,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
         <div class="mb-3">
-            <label for="exercicios" class="form-label">Exercícios</label>
+            <label for="exercicios" class="form-label">Exercícios (separados por vírgula)</label>
             <input type="text" class="form-control" id="exercicios" name="exercicios">
         </div>
         <div class="mb-3">

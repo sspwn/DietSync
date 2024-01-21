@@ -16,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gorduras = $_POST['gorduras'];
     $data_dieta = $_POST['data_dieta'];
     $refeicao = $_POST['refeicao'];
-    $alimentos = $_POST['alimentos'];
+    $alimentos_json = explode(',', $_POST['alimentos']);
+    $alimentos = json_encode($alimentos_json);
     $quantidade = $_POST['quantidade'];
     $observacoes = $_POST['observacoes'];
-    $fk_id_usuario = 0;
 
-    $dieta->AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $fk_id_usuario, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes);
+    $dieta->AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes);
 }
 
 ?>

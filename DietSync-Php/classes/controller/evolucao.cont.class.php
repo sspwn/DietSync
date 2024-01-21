@@ -16,10 +16,11 @@ class Evolucao
         }
     }
 
-    public function RegistrarMedicao($id_usuario, $peso, $altura, $cintura, $data)
+    public function RegistrarMedicao($peso, $altura, $cintura, $data)
     {
-        $comando = $this->pdo->prepare("INSERT INTO medicoes (id_usuario, peso, altura, cintura,data_medicao) VALUES (:id, :p, :a, :c, :d)");
-        $comando->bindValue(":id",$id_usuario);
+        $comando = $this->pdo->prepare("INSERT INTO evolucaos (data, peso, altura, cintura) VALUES (:d :p, :a, :c, :d)");
+        // $comando->bindValue(":id",$id_usuario);
+        $comando->bindValue(":d",$data);
         $comando->bindValue(":p",$peso);
         $comando->bindValue(":a",$altura);
         $comando->bindValue(":c",$cintura);
@@ -29,10 +30,10 @@ class Evolucao
         exit();
     }
 
-    public function dadosEvolucao($id_usuario){
+    public function dadosEvolucao(){
         $resultado = array();
-        $comando = $this->pdo->prepare("SELECT * FROM medicoes WHERE id_usuario = :id");
-        $comando->bindValue(":id", $id_usuario);
+        $comando = $this->pdo->prepare("SELECT * FROM evolucaos");
+        // $comando->bindValue(":id", $id_usuario);
         $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;	

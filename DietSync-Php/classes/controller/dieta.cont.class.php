@@ -17,9 +17,9 @@ class RegistrarDieta
 
 
     // Cadastrar dieta
-    public function AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $fk_id_usuario, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes)
+    public function AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes)
     {
-        $comando = $this->pdo->prepare("INSERT INTO dieta (nome_dieta, tipo_dieta, calorias, proteinas, carboidratos, gorduras, FK_usuario_id_usuario, data_dieta, refeicao, alimentos, quantidade, observacoes) VALUES(:nd, :td, :c, :pr, :cb, :g, :fk, :data, :refeicao, :alimentos, :quantidade, :observacoes)");
+        $comando = $this->pdo->prepare("INSERT INTO dietas (nome_dieta, tipo_dieta, calorias, proteinas, carboidratos, gorduras, data_dieta, refeicao, alimentos, quantidade, observacoes) VALUES(:nd, :td, :c, :pr, :cb, :g, :data, :refeicao, :alimentos, :quantidade, :observacoes)");
 
         $comando->bindValue(":nd", $nome_dieta);
         $comando->bindValue(":td", $tipo_dieta);
@@ -27,7 +27,7 @@ class RegistrarDieta
         $comando->bindValue(":pr", $proteinas);
         $comando->bindValue(":cb", $carboidratos);
         $comando->bindValue(":g", $gorduras);
-        $comando->bindValue(":fk", $fk_id_usuario);
+        // $comando->bindValue(":fk", $fk_id_usuario);
         $comando->bindValue(":data", $data_dieta);
         $comando->bindValue(":refeicao", $refeicao);
         $comando->bindValue(":alimentos", $alimentos);
@@ -39,10 +39,9 @@ class RegistrarDieta
         exit();
     }
 
-    public function DadosDieta($id_usuario){
+    public function DadosDieta(){
         $resultado = array();
-        $comando = $this->pdo->prepare("SELECT nome_dieta, refeicao, alimentos FROM dieta WHERE FK_usuario_id_usuario = :id )");
-        $comando->bindValue(":id",$id_usuario);
+        $comando = $this->pdo->prepare("SELECT nome_dieta, refeicao, alimentos FROM dietas ");
         $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;	

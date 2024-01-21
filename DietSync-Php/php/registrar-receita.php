@@ -1,23 +1,22 @@
 <?php
 $page = 'registrar-receitas';
-$titulo = "Nova Receita";
+$titulo = "Registrar Receita";
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
 $receita = new Receitas("dietsync", "localhost", "root", "");
 
-if(isset($_POST['nome_receita'])){
-    $nome_receita = addslashes($_POST['nome_receita']);
-    $ingredientes = addslashes($_POST['ingredientes']);
-    $modo_preparo = addslashes($_POST['modo_preparo']);
-    $calorias = addslashes($_POST['calorias']);
-    $proteinas = addslashes($_POST['proteinas']);
-    $carboidratos = addslashes($_POST['carboidratos']);
-    $gordura = addslashes($_POST['gordura']);
-
-    if(!empty($nome_receita) && ($ingredientes) && ($modo_preparo) && ($calorias) && ($proteinas) && ($carboidratos) && ($gordura)){
-        $receita->RegistrarReceita($nome_receita, $ingredientes, $modo_preparo,$calorias,$proteinas,$carboidratos,$gordura);
-    }
+if (isset($_POST['nome_receita'])) {
+    $nome_receita = $_POST['nome_receita'];
+    $ingredientes_json = explode(',', $_POST['ingredientes']);
+    $ingredientes = json_encode($ingredientes_json);
+    $modo_preparo = $_POST['modo_preparo'];
+    $calorias = $_POST['calorias'];
+    $proteinas = $_POST['proteinas'];
+    $carboidratos = $_POST['carboidratos'];
+    $gordura = $_POST['gordura'];
+    
+    $receita->RegistrarReceita($nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura);
 }
 ?>
 
@@ -29,7 +28,7 @@ if(isset($_POST['nome_receita'])){
             <input type="text" class="form-control" id="nome_receita" name="nome_receita">
         </div>
         <div class="mb-3">
-            <label for="ingredientes" class="form-label">Ingredientes</label>
+            <label for="ingredientes" class="form-label">Ingredientes (separados por vírgulas)</label>
             <textarea class="form-control" id="ingredientes" name="ingredientes" rows="4"></textarea>
         </div>
         <div class="mb-3">

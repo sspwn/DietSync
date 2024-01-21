@@ -1,47 +1,40 @@
 <?php
-$page = 'receitas';
-$titulo = "Receitas";
+$titulo = "Dieta";
+$page = 'dietagit';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
-$receita = new Receitas("dietsync", "localhost", "root", "");
+$receitas = new Receitas("dietsync", "localhost", "root", "");
+
+// Buscar todas as receitas
+$listaReceitas = $receitas->Receitas();
 ?>
 
 <div class="container" id="main">
-    <h1>Receitas Disponíveis</h1>
+    <h2>Receitas Disponíveis</h2>
 
-    <?php
-    $receitas = $receita->Receitas();
-    if ($receitas) {
-    ?>
-        <table class="table table-hover table-striped table-bordered">
-            <thead>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome da Receita</th>
+                <th scope="col">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($listaReceitas as $receita) : ?>
                 <tr>
-                    <th>Nome da Receita</th>
-                    <th>Ações</th>
+                    <td><?php echo $receita['nome_receita']; ?></td>
+                    <td>
+                        <a href="pagina_receita.php?id=<?php echo $receita['id_receitas']; ?>" class="btn btn-info">Ver Detalhes</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($receitas as $receita) {
-                    echo "<tr>";
-                    echo "<td>{$receita['nome_receita']}</td>";
-                    echo "<td><a href='pagina_receita.php?id={$receita['id_receitas']}' class='btn btn-primary'>Ver Receita</a></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    <?php
-    } else {
-        echo "<p>Nenhuma receita disponível.</p>";
-    }
-    ?>
-
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
 <?php
-include '../php/includes/footer.inc.php'
+include '../php/includes/footer.inc.php';
 ?>
 </body>
 

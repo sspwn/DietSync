@@ -10,7 +10,7 @@ $evolucao = new Evolucao("dietsync", "localhost", "root", "");
 // Verifica se o formulário foi submetido
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Define o ID do usuário (você pode obter isso de onde precisar)
-  $id_usuario = 1;
+  // $id_usuario = 1;
 
   // Obtém os dados do formulário
   $data = addslashes($_POST['data']);
@@ -18,11 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $altura = addslashes($_POST['altura']);
   $cintura = addslashes($_POST['cintura']);
 
-  // Verifica se os campos obrigatórios estão preenchidos
-  if (!empty($data) && !empty($peso) && !empty($altura) && !empty($cintura)) {
-    // Chama o método para registrar a medição no banco de dados
-    $evolucao->RegistrarMedicao($id_usuario, $peso, $altura, $cintura, $data);
-  }
+  $evolucao->RegistrarMedicao($data, $peso, $altura, $cintura);
 }
 ?>
 
@@ -45,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $medicoesAnteriores = $evolucao->dadosEvolucao($id_usuario);
       foreach ($medicoesAnteriores as $medicao) {
         echo "<tr>";
-        echo "<td>{$medicao['data_medicao']}</td>";
+        echo "<td>{$medicao['data']}</td>";
         echo "<td>{$medicao['peso']}</td>";
         echo "<td>{$medicao['altura']}</td>";
         echo "<td>{$medicao['cintura']}</td>";

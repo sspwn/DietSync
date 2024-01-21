@@ -27,14 +27,9 @@ class Receitas
         $comando->bindValue(":pro", $proteinas);
         $comando->bindValue(":carb", $carboidratos);
         $comando->bindValue(":gor", $gordura);
-
-        if ($comando->execute()) {
-            header("Location: ../php/receitas.php");
-            exit();
-        } else {
-            header("Location: ../php/registrar-receita.php");
-            exit();
-        }
+        $comando->execute();
+        header("Location: ../php/registrar-receita.php");
+        exit();
     }
 
     public function Receitas()

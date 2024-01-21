@@ -5,38 +5,32 @@ include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
 $treino = new InserirTreino("dietsync", "localhost", "root", "");
+
+$treinos_disponiveis = $treino->Treinos();
 ?>
 
 <div class="container" id="main">
-    <h1>Receitas Disponíveis</h1>
+    <h1>Treinos Disponíveis</h1>
 
-    <?php
-    $treinos = $treino->Treinos();
-    if ($treinos) {
-        echo "<table class='table table-bordered'>
-                <thead>
-                    <tr>
-                        <th>Nome do Treino</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>";
-
-        foreach ($treinos as $treino) {
-            echo "<tr>
-                    <td>" . $treino['nome_treino'] . "</td>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome da Receita</th>
+                <th scope="col">Detalhes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($treinos_disponiveis as $treino) : ?>
+                <tr>
+                    <td><?php echo $treino['nome_treino']; ?></td>
                     <td>
-                        <a href='pagina_treino.php?id=" . $treino['id_treino'] . "' class='btn btn-primary'>Ver Detalhes</a>
+                        <a href="pagina_treino.php?id=<?php echo $treino['id']; ?>" class="btn btn-info">Ver Detalhes</a>
                     </td>
-                  </tr>";
-        }
-
-        echo "</tbody>
-              </table>";
-    } else {
-        echo "<p>Nenhum treino encontrado.</p>";
-    }
-    ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 </div>
 
 <?php
