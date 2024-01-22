@@ -43,7 +43,7 @@ class Receitas
     public function BuscarReceita($id_receita)
     {
         $resultado = array();
-        $comando = $this->pdo->prepare("SELECT nome_receita, ingredientes, modo_preparo, calorias, proteinas, carboidratos, gordura FROM receita WHERE id_receitas = :id");
+        $comando = $this->pdo->prepare("SELECT * FROM receita WHERE id_receitas = :id");
         $comando->bindValue(":id",$id_receita);
         $comando->execute(); 
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);

@@ -41,7 +41,7 @@ class RegistrarDieta
 
     public function DadosDieta(){
         $resultado = array();
-        $comando = $this->pdo->prepare("SELECT nome_dieta, refeicao, alimentos FROM dietas ");
+        $comando = $this->pdo->prepare("SELECT * FROM dietas ");
         $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;	

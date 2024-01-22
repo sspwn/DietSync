@@ -45,7 +45,7 @@ class InserirTreino
     public function BuscarTreino($id_treino)
 {
     $resultado = array();
-    $comando = $this->pdo->prepare("SELECT * FROM treino WHERE id_treino = :id");
+    $comando = $this->pdo->prepare("SELECT * FROM treino WHERE id = :id");
     $comando->bindValue(":id", $id_treino);
     $comando->execute(); 
     $resultado = $comando->fetch(PDO::FETCH_ASSOC);

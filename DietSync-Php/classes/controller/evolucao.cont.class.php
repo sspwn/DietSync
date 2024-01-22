@@ -24,7 +24,6 @@ class Evolucao
         $comando->bindValue(":p",$peso);
         $comando->bindValue(":a",$altura);
         $comando->bindValue(":c",$cintura);
-        $comando->bindValue(":d",$data);
         $comando->execute();
         header("Location: ../php/evolucao.php");
         exit();

@@ -15,29 +15,37 @@ if (isset($_GET['id'])) {
         echo "<div class='container' id='main'>
                 <h1>Detalhes do Treino</h1>
                 <ul>
-                    <li>Nome do Treino: " . $dadosDoTreino['nome_treino'] . "</li>
-                    <li>Objetivo: " . $dadosDoTreino['objetivo'] . "</li>
-                    <li>Duração: " . $dadosDoTreino['duracao'] . "</li>
-                    <li>Frequência: " . $dadosDoTreino['frequencia'] . "</li>
-                    <li>Exercícios: " . $dadosDoTreino['exercicios'] . "</li>
-                    <li>Série: " . $dadosDoTreino['serie'] . "</li>
-                    <li>Repetição: " . $dadosDoTreino['repeticao'] . "</li>
-                    <li>Tipo: " . $dadosDoTreino['tipo'] . "</li>
-                    <li>Data do Treino: " . $dadosDoTreino['data_treino'] . "</li>
-                    <!-- Adicione outras informações conforme necessário -->
+                    <p><strong>Nome do Treino: </strong>" . $dadosDoTreino['nome_treino'] . "</p>
+                    <p><strong>Objetivo: </strong>" . $dadosDoTreino['objetivo'] . "</p>
+                    <p><strong>Duração: </strong>" . $dadosDoTreino['duracao'] . "</p>
+                    <p><strong>Frequência: </strong>" . $dadosDoTreino['frequencia'] . "</p>";
+
+        // Decodifica o JSON de exercicios
+        $exercicios = json_decode($dadosDoTreino['exercicios'], true);
+
+        // Verifica se a decodificação foi bem-sucedida
+        if ($exercicios !== null && is_array($exercicios)) {
+            echo "<p><strong>Exercícios:</strong> <ol>";
+            foreach ($exercicios as $exercicio) {
+                echo "<li>$exercicio</li>";
+            }
+            echo "</ol></p>";
+        } else {
+            echo "<p>Exercícios: Nenhum exercício especificado.</p>";
+        }
+
+        echo "<p><strong>Série: </strong>" . $dadosDoTreino['series'] . "</p>
+                    <p><strong>Repetição: </strong>" . $dadosDoTreino['repeticoes'] . "</p>
+                    <p><strong>Tipo: </strong>" . $dadosDoTreino['tipo'] . "</p>
+                    <p><strong>Data do Treino: </strong>" . $dadosDoTreino['data'] . "</p>
                 </ul>
               </div>";
     } else {
         echo "<div class='container' id='main'>
-                <p>Treino não encontrado ou dados incompletos.</p>
+                <h1>Treino não encontrado ou dados incompletos.</h1>
               </div>";
     }
-} else {
-    echo "<div class='container' id='main'>
-            <p>ID do treino não fornecido.</p>
-          </div>";
 }
-
 include '../php/includes/footer.inc.php';
 ?>
 

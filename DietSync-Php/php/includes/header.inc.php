@@ -17,9 +17,19 @@
                 <div class="col-10">
                     <i class="btn btn-lg text-white bi bi-list" id="header-toggle"></i>
                 </div>
+                <?php
+                // Inicie a sessão
+                session_start();
+
+                // Verifique se o nome do usuário está na sessão
+                $userName = isset($_SESSION['name']) ? $_SESSION['name'] : '';
+
+                // ...
+                ?>
                 <div class="col-2 text-white my-2 py-1">
-                    <span>Usuário</span>
+                    <span><?php echo $userName; ?></span>
                 </div>
+
             </div>
         </div>
     </header>

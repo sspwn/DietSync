@@ -2,12 +2,12 @@
         <nav class="nav">
             <div>
 
-                <a href="index.php" class="nav_logo">
+                <a href="home.php" class="nav_logo">
                     <span class="nav_logo-name">Diet Sync</span>
                 </a>
 
                 <div class="nav_list">
-                    <a href="index.php
+                    <a href="home.php
                     " class="nav_link <?php if ($page == 'menu') echo 'active'; ?>">
                         <i class="bi bi-house"></i>
                         <span class="nav_name">Home</span>
@@ -34,7 +34,7 @@
 
                     <a href="dieta.php
                     " class="nav_link <?php if ($page == 'dieta') echo 'active'; ?>">
-                    <i class="bi bi-ui-checks-grid"></i>
+                        <i class="bi bi-ui-checks-grid"></i>
                         <span class="nav_name">Dieta</span>
                     </a>
 
@@ -56,12 +56,19 @@
                         <span class="nav_name">Receitas</span>
                     </a>
 
+                    <a href="agradecimentos.php
+                    " class="nav_link <?php if ($page == 'agradecimentos') echo 'active'; ?>">
+                        <i class="bi bi-hearts"></i>
+                        <span class="nav_name">Agradecimentos</span>
+                    </a>
+
                 </div>
             </div>
 
-            <a href="#" class="nav_link">
+            <a href="config.php
+                    " class="nav_link <?php if ($page == 'configuracoes') echo 'active'; ?>">
                 <i class="bi bi-gear"></i>
-                <span class="nav_name">Configuração</span>
+                <span class="nav_name">configurações</span>
             </a>
 
         </nav>

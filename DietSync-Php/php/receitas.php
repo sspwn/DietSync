@@ -1,6 +1,6 @@
 <?php
-$titulo = "Dieta";
-$page = 'dietagit';
+$titulo = "Receitas";
+$page = 'receitas';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
@@ -16,8 +16,9 @@ $listaReceitas = $receitas->Receitas();
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Nome da Receita</th>
-                <th scope="col">Detalhes</th>
+                <th>Nome da Receita</th>
+                <th>Detalhes</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +26,10 @@ $listaReceitas = $receitas->Receitas();
                 <tr>
                     <td><?php echo $receita['nome_receita']; ?></td>
                     <td>
-                        <a href="pagina_receita.php?id=<?php echo $receita['id_receitas']; ?>" class="btn btn-info">Ver Detalhes</a>
+                        <a href="pagina_receita.php?id_receitas=<?php echo $receita['id_receitas']; ?>" class="btn btn-success">Ver Detalhes</a>
+                    </td>
+                    <td>
+                    <button class="btn btn-danger"><i class="bi bi-x-circle"></i></button>
                     </td>
                 </tr>
             <?php endforeach; ?>

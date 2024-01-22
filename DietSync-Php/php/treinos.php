@@ -1,6 +1,6 @@
 <?php
-$titulo = "Menu";
-$page = 'menu';
+$titulo = "Treino";
+$page = 'treino';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
@@ -15,8 +15,9 @@ $treinos_disponiveis = $treino->Treinos();
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Nome da Receita</th>
-                <th scope="col">Detalhes</th>
+                <th>Nome da Receita</th>
+                <th>Detalhes</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@ $treinos_disponiveis = $treino->Treinos();
                     <td><?php echo $treino['nome_treino']; ?></td>
                     <td>
                         <a href="pagina_treino.php?id=<?php echo $treino['id']; ?>" class="btn btn-info">Ver Detalhes</a>
+                    </td>
+                    <td>
+                    <button class="btn btn-danger"><i class="bi bi-x-circle"></i></button>
                     </td>
                 </tr>
             <?php endforeach; ?>

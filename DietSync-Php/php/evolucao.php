@@ -8,12 +8,12 @@ require_once '../classes/controller/evolucao.cont.class.php';
 $evolucao = new Evolucao("dietsync", "localhost", "root", "");
 
 // Verifica se o formulário foi submetido
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Define o ID do usuário (você pode obter isso de onde precisar)
   // $id_usuario = 1;
 
   // Obtém os dados do formulário
-  $data = addslashes($_POST['data']);
+  $data = addslashes($_POST['dataMedicao']);
   $peso = addslashes($_POST['peso']);
   $altura = addslashes($_POST['altura']);
   $cintura = addslashes($_POST['cintura']);
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <!-- Aqui vão aparecer as medidas antigas -->
       <?php
       $id_usuario = 1;
-      $medicoesAnteriores = $evolucao->dadosEvolucao($id_usuario);
+      $medicoesAnteriores = $evolucao->dadosEvolucao();
       foreach ($medicoesAnteriores as $medicao) {
         echo "<tr>";
         echo "<td>{$medicao['data']}</td>";
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form method="post">
     <div class="form-group">
       <label for="dataMedicao">Data da Medição</label>
-      <input type="date" class="form-control" id="data" name="data" required>
+      <input type="date" class="form-control" id="dataMedicao" name="dataMedicao" required>
     </div>
 
     <div class="form-group">
