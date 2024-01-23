@@ -4,6 +4,7 @@ $page = 'dieta';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/dieta.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $dieta = new RegistrarDieta("dietsync", "localhost", "root", "");
 
 $dadosDieta = $dieta->DadosDieta();
@@ -24,7 +25,7 @@ $dadosDieta = $dieta->DadosDieta();
                 <tr>
                     <td><?php echo $dieta['nome_dieta']; ?></td>
                     <td>
-                        <button class="btn btn-info" data-toggle="collapse" data-target="#detalhesDieta<?php echo $dieta['id_dieta']; ?>">
+                        <button class="btn btn-success" data-toggle="collapse" data-target="#detalhesDieta<?php echo $dieta['id_dieta']; ?>">
                             Ver Detalhes
                         </button>
                         <div id="detalhesDieta<?php echo $dieta['id_dieta']; ?>" class="collapse">

@@ -4,6 +4,7 @@ $titulo = "Registrar Treino";
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $treino = new InserirTreino("dietsync", "localhost", "root", "");
 ?>
 
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" class="form-control" id="nome_treino" name="nome_treino">
         </div>
 
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-success">Registrar</button>
     </form>
 </div>
 

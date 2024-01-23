@@ -9,17 +9,26 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
   <title>Login</title>
 </head>
+
 <?php
 $titulo = "Login";
 $page = 'login';
 require_once '../classes/controller/usuario.cont.class.php';
 $usuario = new Usuario("dietsync", "localhost", "root", "");
+
+// Inicia a sessão
+session_start();
+
+// Verifica se o usuário já está autenticado, se sim, redireciona para a página home
+if (isset($_SESSION['name'])) {
+  header("Location: home.php");
+  exit();
+}
+
 ?>
 
 <body>
   <?php
-  // Supondo que você tenha uma instância da classe Usuario com o método VerificarLogin
-  $usuario = new Usuario("dietsync", "localhost", "root", "");
 
   if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = addslashes($_POST['email']);
@@ -29,8 +38,7 @@ $usuario = new Usuario("dietsync", "localhost", "root", "");
       // Login bem-sucedido, obtenha o nome do usuário
       $name = $usuario->ObterNomeUsuario($email);
 
-      // Armazene o nome do usuário em uma sessão (por exemplo)
-      session_start();
+      // Armazene o nome do usuário em uma sessão
       $_SESSION['name'] = $name;
 
       // Redirecione para a próxima página

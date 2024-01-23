@@ -11,7 +11,6 @@
     <title>Registro</title>
 </head>
 <?php
-$titulo = "Registrar usuario";
 $page = 'registrar-user';
 require_once '../classes/controller/usuario.cont.class.php';
 $usuario = new Usuario("dietsync", "localhost", "root", "");

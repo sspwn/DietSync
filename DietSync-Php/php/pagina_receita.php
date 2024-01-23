@@ -4,6 +4,7 @@ $titulo = "receitas";
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $receita = new Receitas("dietsync", "localhost", "root", "");
 ?>
 

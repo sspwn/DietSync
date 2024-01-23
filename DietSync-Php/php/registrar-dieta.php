@@ -4,6 +4,7 @@ $page = "registrar-dieta";
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/dieta.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $dieta = new RegistrarDieta("dietsync", "localhost", "root", "");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -82,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="observacoes">Observações</label>
             <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Digite as observações"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
     </form>
 </div>
 

@@ -3,6 +3,7 @@ $titulo ="Menu";
 $page = 'menu';
 include '../php\includes\header.inc.php';
 include '../php\includes\menu.inc.php';
+require '../php/ajax/verificar_session.php';
 ?>
 <div class="container" id="main">
   <div class="row">

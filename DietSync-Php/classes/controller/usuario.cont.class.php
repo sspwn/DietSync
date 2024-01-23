@@ -61,4 +61,32 @@ class Usuario
         return $resultado['name']; // Supondo que o campo seja 'nome' no seu banco de dados
     }
 
+    public function ObterUsuario($name)
+    {
+        $comando = $this->pdo->prepare("SELECT * FROM users WHERE name = :nome");
+        $comando->bindValue(":nome", $name);
+        $comando->execute();
+
+       $resultado = $comando->fetch(PDO::FETCH_ASSOC);
+       return $resultado;
+    }
+
+
+    public function AtualizarUsuario( $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
+    {
+        $comando = $this->pdo->prepare("UPDATE users SET name = :name, meta = :meta, sexo = :sexo, data_nasc = :data, peso = :peso, altura = :altura, email = :email WHERE id = :id");
+
+        $comando->bindValue(":name", $nome);
+        $comando->bindValue(":meta", $meta);
+        $comando->bindValue(":sexo", $sexo);
+        $comando->bindValue(":data", $data_nasc);
+        $comando->bindValue(":peso", $peso);
+        $comando->bindValue(":altura", $altura);
+        $comando->bindValue(":email", $email);
+        
+        $comando->execute();
+          // Redireciona para a mesma página após a atualização
+        header("Location: {$_SERVER['PHP_SELF']}");
+        exit();
+    }
 }

@@ -22,25 +22,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
     mostrarBarraNavegacao('header-toggle', 'nav-bar', 'body-pd', 'header')
 });
 
-    // Função para verificar a visibilidade com base na seleção de serviço
-    function checarVisibilidade() {
-        var selectedService = document.querySelector('input[name="nome_servico"]:checked');
-        var PatrimonioContainer = document.getElementById('PatrimonioContainer');
-        
-        if (selectedService && selectedService.getAttribute('data-patrimonio') === 'Sim') {
-            PatrimonioContainer.classList.remove('invisible');
-        } else {
-            PatrimonioContainer.classList.add('invisible');
-        }
-    }
-
-    // Adicione um evento 'change' para o elemento de serviço para verificar a visibilidade
-    var serviceInputs = document.querySelectorAll('input[name="nome_servico"]');
-    serviceInputs.forEach(function(input) {
-        input.addEventListener('change', checarVisibilidade);
-    });
-
-    // Verifique a visibilidade inicialmente quando a página carregar
-    checarVisibilidade();
-
     

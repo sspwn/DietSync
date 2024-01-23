@@ -3,41 +3,31 @@ $titulo = "Configurações";
 $page = 'configuracoes';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
+require '../php/ajax/verificar_session.php';
+require_once '../classes/controller/usuario.cont.class.php';
+$user = new Usuario("dietsync", "localhost", "root", "");
 
-// Simulando dados do usuário (substitua com a lógica de autenticação real)
-$usuarioAtual = [
-    'id' => 1,
-    'nome' => 'Gabriel Vaz Scremim',
-    'meta' => 'Perder peso',
-    'sexo' => 'Masculino',
-    'data_nasc' => '1990-01-01',
-    'peso' => 70,
-    'altura' => 1.75,
-    'email' => 'gabriel@example.com',
-];
+// Verifique se o usuário está logado
+if (!isset($_SESSION['name'])) {
+    // Se não estiver logado, redirecione para a página de login
+    header("Location: index.php");
+    exit();
+}
+
+// Obtém as informações do usuário logado (substitua pela lógica real)
+$usuarioAtual = $user->ObterUsuario($_SESSION['name']);
 
 // Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Aqui você pode processar os dados do formulário e realizar as alterações no banco de dados
-    // Suponha que os dados sejam alterados corretamente para este exemplo
-    $mensagemSucesso = "Dados alterados com sucesso!";
+    $user->AtualizarUsuario($_POST['nome'], $_POST['meta'], $_POST['sexo'], $_POST['data_nasc'], $_POST['peso'], $_POST['altura'], $_POST['email']);
 }
-
 ?>
-
 <div class="container" id="main">
     <h1>Configurações do Sistema</h1>
-
-    <?php if (isset($mensagemSucesso)) : ?>
-        <div class="alert alert-success" role="alert">
-            <?php echo $mensagemSucesso; ?>
-        </div>
-    <?php endif; ?>
-
     <form method="post">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $usuarioAtual['nome']; ?>" required>
+            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $usuarioAtual['name']; ?>" required>
         </div>
         <div class="mb-3">
             <label for="meta" class="form-label">Meta</label>
@@ -68,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
     </form>
+    <p>&nbsp;</p>
+    <a href="../php/ajax/logout.php" class="btn btn-danger">Logout</a>
 </div>
 
 <?php

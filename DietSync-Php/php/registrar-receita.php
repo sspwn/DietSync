@@ -4,6 +4,7 @@ $titulo = "Registrar Receita";
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $receita = new Receitas("dietsync", "localhost", "root", "");
 
 if (isset($_POST['nome_receita'])) {
@@ -52,7 +53,7 @@ if (isset($_POST['nome_receita'])) {
             <input type="number" class="form-control" id="gordura" name="gordura">
         </div>
 
-        <button type="submit" class="btn btn-primary" value="cadastrar">Registrar</button>
+        <button type="submit" class="btn btn-success" value="cadastrar">Registrar</button>
     </form>
 </div>
 

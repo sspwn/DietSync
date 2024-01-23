@@ -4,6 +4,7 @@ $page = 'receitas';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $receitas = new Receitas("dietsync", "localhost", "root", "");
 
 // Buscar todas as receitas

@@ -4,6 +4,7 @@ $page = 'treino';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $treino = new InserirTreino("dietsync", "localhost", "root", "");
 
 if (isset($_GET['id'])) {

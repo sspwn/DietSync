@@ -4,6 +4,7 @@ $page = 'evolucao';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/evolucao.cont.class.php';
+require '../php/ajax/verificar_session.php';
 
 $evolucao = new Evolucao("dietsync", "localhost", "root", "");
 
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <input type="number" class="form-control" id="cintura" name="cintura" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Registrar Medição</button>
+    <button type="submit" class="btn btn-success">Registrar Medição</button>
   </form>
 
 </div>

@@ -4,6 +4,7 @@ $page = 'treino';
 include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
+require '../php/ajax/verificar_session.php';
 $treino = new InserirTreino("dietsync", "localhost", "root", "");
 
 $treinos_disponiveis = $treino->Treinos();
@@ -25,7 +26,7 @@ $treinos_disponiveis = $treino->Treinos();
                 <tr>
                     <td><?php echo $treino['nome_treino']; ?></td>
                     <td>
-                        <a href="pagina_treino.php?id=<?php echo $treino['id']; ?>" class="btn btn-info">Ver Detalhes</a>
+                        <a href="pagina_treino.php?id=<?php echo $treino['id']; ?>" class="btn btn-success">Ver Detalhes</a>
                     </td>
                     <td>
                     <button class="btn btn-danger"><i class="bi bi-x-circle"></i></button>
