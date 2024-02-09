@@ -52,13 +52,12 @@ class Usuario
     }
 
     public function ObterNomeUsuario($email) {
-        $comando = $this->pdo->prepare("SELECT name FROM users WHERE email = :email");
+        $comando = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
         $comando->bindValue(":email", $email);
         $comando->execute();
 
         $resultado = $comando->fetch(PDO::FETCH_ASSOC);
-
-        return $resultado['name']; // Supondo que o campo seja 'nome' no seu banco de dados
+        return $resultado;
     }
 
     public function ObterUsuario($name)
@@ -72,10 +71,11 @@ class Usuario
     }
 
 
-    public function AtualizarUsuario( $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
+    public function AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
     {
         $comando = $this->pdo->prepare("UPDATE users SET name = :name, meta = :meta, sexo = :sexo, data_nasc = :data, peso = :peso, altura = :altura, email = :email WHERE id = :id");
 
+        $comando->bindValue(":id", $id);
         $comando->bindValue(":name", $nome);
         $comando->bindValue(":meta", $meta);
         $comando->bindValue(":sexo", $sexo);
@@ -83,7 +83,6 @@ class Usuario
         $comando->bindValue(":peso", $peso);
         $comando->bindValue(":altura", $altura);
         $comando->bindValue(":email", $email);
-        
         $comando->execute();
           // Redireciona para a mesma página após a atualização
         header("Location: {$_SERVER['PHP_SELF']}");

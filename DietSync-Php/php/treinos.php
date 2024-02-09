@@ -6,8 +6,8 @@ include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino.cont.class.php';
 require '../php/ajax/verificar_session.php';
 $treino = new InserirTreino("dietsync", "localhost", "root", "");
-
-$treinos_disponiveis = $treino->Treinos();
+$user_id = $_SESSION['id'];
+$treinos_disponiveis = $treino->Treinos($user_id);
 ?>
 
 <div class="container" id="main">

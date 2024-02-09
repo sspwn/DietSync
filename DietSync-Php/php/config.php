@@ -16,10 +16,18 @@ if (!isset($_SESSION['name'])) {
 
 // Obtém as informações do usuário logado (substitua pela lógica real)
 $usuarioAtual = $user->ObterUsuario($_SESSION['name']);
-
 // Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user->AtualizarUsuario($_POST['nome'], $_POST['meta'], $_POST['sexo'], $_POST['data_nasc'], $_POST['peso'], $_POST['altura'], $_POST['email']);
+    $user->AtualizarUsuario(
+        $usuarioAtual['id'],
+        $_POST['nome'],
+        $_POST['meta'],
+        $_POST['sexo'],
+        $_POST['data_nasc'],
+        $_POST['peso'],
+        $_POST['altura'],
+        $_POST['email']
+    );
 }
 ?>
 <div class="container" id="main">
@@ -36,10 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mb-3">
             <label for="sexo" class="form-label">Sexo</label>
             <select class="form-select" id="sexo" name="sexo" required>
-                <option value="Feminino" <?php echo ($usuarioAtual['sexo'] === 'Feminino') ? 'selected' : ''; ?>>Feminino</option>
-                <option value="Masculino" <?php echo ($usuarioAtual['sexo'] === 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
+                <option value="Feminino" <?php echo ($usuarioAtual['sexo'] == 'Fem') ? 'selected' : ''; ?>>Feminino</option>
+                <option value="Masculino" <?php echo ($usuarioAtual['sexo'] == 'Mas') ? 'selected' : ''; ?>>Masculino</option>
             </select>
         </div>
+
         <div class="mb-3">
             <label for="data_nasc" class="form-label">Data de Nascimento</label>
             <input type="date" class="form-control" id="data_nasc" name="data_nasc" value="<?php echo $usuarioAtual['data_nasc']; ?>" required>

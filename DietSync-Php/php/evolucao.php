@@ -7,19 +7,16 @@ require_once '../classes/controller/evolucao.cont.class.php';
 require '../php/ajax/verificar_session.php';
 
 $evolucao = new Evolucao("dietsync", "localhost", "root", "");
-
+$user_id = $_SESSION['id'];
 // Verifica se o formulário foi submetido
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Define o ID do usuário (você pode obter isso de onde precisar)
-  // $id_usuario = 1;
-
   // Obtém os dados do formulário
   $data = addslashes($_POST['dataMedicao']);
   $peso = addslashes($_POST['peso']);
   $altura = addslashes($_POST['altura']);
   $cintura = addslashes($_POST['cintura']);
 
-  $evolucao->RegistrarMedicao($data, $peso, $altura, $cintura);
+  $evolucao->RegistrarMedicao($data, $peso, $altura, $cintura,$user_id);
 }
 ?>
 
@@ -38,8 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <tbody>
       <!-- Aqui vão aparecer as medidas antigas -->
       <?php
-      $id_usuario = 1;
-      $medicoesAnteriores = $evolucao->dadosEvolucao();
+      $medicoesAnteriores = $evolucao->dadosEvolucao($user_id);
       foreach ($medicoesAnteriores as $medicao) {
         echo "<tr>";
         echo "<td>{$medicao['data']}</td>";

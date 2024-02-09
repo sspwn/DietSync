@@ -21,12 +21,12 @@
                 // Inicie a sessão
                 session_start();
 
-                // Verifique se o nome do usuário está na sessão
+                // Verifique se o nome do usuário está na sessão 
                 $userName = isset($_SESSION['name']) ? $_SESSION['name'] : '';
 
                 // ...
                 ?>
-                <div class="col-2 text-white my-2 py-1">
+                <div class="col-2 text-white">
                     <span><?php echo $userName; ?></span>
                 </div>
 

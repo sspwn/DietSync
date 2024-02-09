@@ -7,6 +7,7 @@ require_once '../classes/controller/dieta.cont.class.php';
 require '../php/ajax/verificar_session.php';
 $dieta = new RegistrarDieta("dietsync", "localhost", "root", "");
 
+$user_id = $_SESSION['id'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nome_dieta = $_POST['nome_dieta'];
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantidade = $_POST['quantidade'];
     $observacoes = $_POST['observacoes'];
 
-    $dieta->AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes);
+    $dieta->AdicionarDieta($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes,$user_id);
 }
 
 ?>

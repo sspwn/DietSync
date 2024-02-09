@@ -10,25 +10,21 @@
   <title>Login</title>
 </head>
 
-<?php
-$titulo = "Login";
-$page = 'login';
-require_once '../classes/controller/usuario.cont.class.php';
-$usuario = new Usuario("dietsync", "localhost", "root", "");
-
-// Inicia a sessão
-session_start();
-
-// Verifica se o usuário já está autenticado, se sim, redireciona para a página home
-if (isset($_SESSION['name'])) {
-  header("Location: home.php");
-  exit();
-}
-
-?>
-
 <body>
   <?php
+  $titulo = "Login";
+  $page = 'login';
+  require_once '../classes/controller/usuario.cont.class.php';
+  $usuario = new Usuario("dietsync", "localhost", "root", "");
+
+  // Inicia a sessão
+  session_start();
+
+  // Verifica se o usuário já está autenticado, se sim, redireciona para a página home
+  if (isset($_SESSION['name'])) {
+    header("Location: home.php");
+    exit();
+  }
 
   if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = addslashes($_POST['email']);
@@ -39,7 +35,8 @@ if (isset($_SESSION['name'])) {
       $name = $usuario->ObterNomeUsuario($email);
 
       // Armazene o nome do usuário em uma sessão
-      $_SESSION['name'] = $name;
+      $_SESSION['name'] = $name['name'];
+      $_SESSION['id'] = $name['id'];
 
       // Redirecione para a próxima página
       header("Location: home.php");

@@ -5,7 +5,7 @@ include '../php\includes\header.inc.php';
 include '../php\includes\menu.inc.php';
 require '../php/ajax/verificar_session.php';
 ?>
-<div class="container" id="main">
+<div class="container-fluid" id="main">
   <div class="row">
     <div class="col-md-6">
       <img src="../img/vertical_3.png" alt="logo dietsync" class="w-50">

@@ -46,7 +46,7 @@ require '../php/ajax/verificar_session.php';
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Professora Tânia Camila Goulart</h5>
-                    <p class="card-text">A melhor professora de matemática do mundo e a responsável pelo PROJETO DE EXNTESÃO CURRICULAR, no qual a DietSync fez parte.</p>
+                    <p class="card-text">A melhor professora de matemática e a responsável pelo PROJETO DE EXTENSÃO CURRICULAR, no qual a DietSync fez parte.</p>
                 </div>
             </div>
         </div>

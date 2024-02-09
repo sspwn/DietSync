@@ -5,39 +5,32 @@ include '../php/includes/header.inc.php';
 include '../php/includes/menu.inc.php';
 require_once '../classes/controller/dieta.cont.class.php';
 require '../php/ajax/verificar_session.php';
-$dieta = new RegistrarDieta("dietsync", "localhost", "root", "");
+$dietaController = new RegistrarDieta("dietsync", "localhost", "root", "");
 
-$dadosDieta = $dieta->DadosDieta();
+$user_id = $_SESSION['id'];
+$dadosDieta = $dietaController->DadosDieta($user_id);
 ?>
 
 <div class="container" id="main">
     <h2>Plano de Refeições do Dia</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome Dieta</th>
-                <th>Detalhes</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($dadosDieta as $dieta) : ?>
-                <tr>
-                    <td><?php echo $dieta['nome_dieta']; ?></td>
-                    <td>
-                        <button class="btn btn-success" data-toggle="collapse" data-target="#detalhesDieta<?php echo $dieta['id_dieta']; ?>">
-                            Ver Detalhes
-                        </button>
-                        <div id="detalhesDieta<?php echo $dieta['id_dieta']; ?>" class="collapse">
-                            <ul>
-                                <li>Tipo de Dieta: <?php echo $dieta['tipo_dieta']; ?></li>
-                                <li>Calorias: <?php echo $dieta['calorias']; ?></li>
-                                <li>Proteínas: <?php echo $dieta['proteinas']; ?></li>
-                                <li>Carboidratos: <?php echo $dieta['carboidratos']; ?></li>
-                                <li>Gorduras: <?php echo $dieta['gorduras']; ?></li>
-                                <li>Data da Dieta: <?php echo $dieta['data_dieta']; ?></li>
-                                <li>Refeição: <?php echo $dieta['refeicao']; ?></li>
-                                <li>Alimentos:
+    <?php foreach ($dadosDieta as $dieta) : ?>
+        <div class="list-group mt-4">
+            <strong class="text-uppercase">
+                <a href="#<?= $dieta['refeicao'] ?>" class="list-group-item list-group-item-action" data-toggle="collapse">
+                    <?= $dieta['refeicao'] ?>
+                </a>
+            </strong>
+            <div class="collapse w-100" id="<?= $dieta['refeicao'] ?>">
+                <div class="card card-body">
+                    <ul>
+                        <li><strong>Data da Dieta:</strong> <?= $dieta['data_dieta'] ?></li>
+                        <li><strong>Nome da Dieta:</strong> <?= $dieta['nome_dieta'] ?></li>
+                        <li><strong>Tipo de Dieta:</strong> <?= $dieta['tipo_dieta'] ?></li>
+                        <li><strong>Calorias:</strong> <?= $dieta['calorias'] ?></li>
+                        <li><strong>Proteínas:</strong> <?= $dieta['proteinas'] ?></li>
+                        <li><strong>Carboidratos:</strong> <?= $dieta['carboidratos'] ?></li>
+                        <li><strong>Gorduras:</strong> <?= $dieta['gorduras'] ?></li>
+                        <li><strong>Alimentos:</strong>
                             <?php
                             $alimentos = json_decode($dieta['alimentos'], true);
                             if ($alimentos !== null && is_array($alimentos)) {
@@ -47,23 +40,17 @@ $dadosDieta = $dieta->DadosDieta();
                                 }
                                 echo '</ul>';
                             } else {
-                                echo 'Nenhum alimento especificado.';
+                                echo 'Nenhum alimento listado.';
                             }
                             ?>
                         </li>
-                                <li>Quantidade: <?php echo $dieta['quantidade']; ?></li>
-                                <li>Observações: <?php echo $dieta['observacoes']; ?></li>
-                                <!-- Adicione outras informações conforme necessário -->
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                    <button class="btn btn-danger"><i class="bi bi-x-circle"></i></button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                        <li><strong>Quantidade:</strong> <?= $dieta['quantidade'] ?></li>
+                        <li><strong>Observações:</strong> <?= $dieta['observacoes'] ?></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
 </div>
 
 <?php

@@ -9,6 +9,7 @@ $treino = new InserirTreino("dietsync", "localhost", "root", "");
 ?>
 
 <?php
+$user_id = $_SESSION['id'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST["data"];
     $tipo = $_POST["tipo"];
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $frequencia = $_POST["frequencia"];
     $nome_treino = $_POST["nome_treino"];
 
-    $treino->AdicionarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino);
+    $treino->AdicionarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino,$user_id);
 }
 ?>
 <div class="container" id="main">
