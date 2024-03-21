@@ -23,7 +23,7 @@ class UsuarioController
     }
     public function CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
-        $this->pdo->CadastrarUser($nome,$sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
+        $this->pdo->CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
     }
 
     public function VerificarLogin($email, $senha)
@@ -41,24 +41,13 @@ class UsuarioController
         // Verifica na tabela 'users'
         $user = $this->pdo->ObterNomeUsuario($email);
         // Se o usuário estiver na tabela 'users', retorna os dados
-        if ($user) {
-            return $user;
-        } else {
-            // Se o usuário não estiver em nenhuma das tabelas, retorna falso
-            return false;
-        }
+        return $user;
     }
-    public function ObterUsuario($name)
+    public function ObterUsuario($id_user)
     {
         // Verifica na tabela 'users'
-        $user = $this->pdo->ObterUsuario($name);
-        // Se o usuário estiver na tabela 'users', retorna os dados
-        if ($user) {
-            return $user;
-        } else {
-            // Se o usuário não estiver em nenhuma das tabelas, retorna falso
-            return false;
-        }
+        $user = $this->pdo->ObterUsuario($id_user);
+        return $user;
     }
 
     public function ObterTodosUsuarios()
@@ -70,6 +59,6 @@ class UsuarioController
 
     public function AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
     {
-        $comando = $this->pdo->AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email);
+       $this->pdo->AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email);
     }
 }

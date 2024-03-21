@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Verifica se o usuário não está autenticado
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['id'])) {
     // Redireciona para a página de login
     header("Location: index.php");
     exit();

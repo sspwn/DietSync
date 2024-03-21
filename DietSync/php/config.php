@@ -7,14 +7,14 @@ require_once '../classes/controller/usuario-cont.class.php';
 $user = new UsuarioController();
 
 // Verifique se o usuário está logado
-if (!isset($_SESSION['name'])) {
+if (!isset($_SESSION['id'])) {
     // Se não estiver logado, redirecione para a página de login
     header("Location: index.php");
     exit();
 }
 
 // Obtém as informações do usuário logado (substitua pela lógica real)
-$usuarioAtual = $user->ObterUsuario($_SESSION['name']);
+$usuarioAtual = $user->ObterUsuario($_SESSION['id']);
 // Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user->AtualizarUsuario(
@@ -35,6 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $usuarioAtual['name']; ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="sobrenome" class="form-label">Sobrenome</label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="<?php echo $usuarioAtual['sobrenome']; ?>" required>
         </div>
         <?php if(isset($usuarioAtual['meta']) && !empty($usuarioAtual['meta'])): ?>
         <div class="mb-3">

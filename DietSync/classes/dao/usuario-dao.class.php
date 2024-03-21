@@ -8,7 +8,7 @@ class UsuarioModel
         $this->pdo = $pdo;
     }
 
-    public function CadastrarUser($nome,$sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
+    public function CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
         $comando = $this->pdo->prepare("INSERT INTO users(name, sobrenome, meta, sexo, data_nasc, peso, altura, email, password) VALUES(:name,:sobrenome, :meta, :sexo, :data, :peso, :altura, :email, :password)");
 
@@ -47,75 +47,17 @@ class UsuarioModel
         $comandoUser->bindValue(":email", $email);
         $comandoUser->execute();
         $user = $comandoUser->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'users', retorna os dados
-        if ($user) {
-            return $user;
-        }
-
-        // Se não estiver na tabela 'users', verifica na tabela 'personal'
-        $comandoPersonal = $this->pdo->prepare("SELECT * FROM personal WHERE email = :email");
-        $comandoPersonal->bindValue(":email", $email);
-        $comandoPersonal->execute();
-        $personal = $comandoPersonal->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'personal', retorna os dados
-        if ($personal) {
-            return $personal;
-        }
-
-        // Se não estiver na tabela 'personal', verifica na tabela 'nutricionista'
-        $comandoNutricionista = $this->pdo->prepare("SELECT * FROM nutricionista WHERE email = :email");
-        $comandoNutricionista->bindValue(":email", $email);
-        $comandoNutricionista->execute();
-        $nutricionista = $comandoNutricionista->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'nutricionista', retorna os dados
-        if ($nutricionista) {
-            return $nutricionista;
-        }
-
-        // Se o usuário não estiver em nenhuma das tabelas, retorna falso
-        return false;
+        return $user;
     }
 
-    public function ObterUsuario($name)
+    public function ObterUsuario($id_user)
     {
         // Verifica na tabela 'users'
-        $comandoUser = $this->pdo->prepare("SELECT * FROM users WHERE name = :name");
-        $comandoUser->bindValue(":name", $name);
+        $comandoUser = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $comandoUser->bindValue(":id", $id_user);
         $comandoUser->execute();
         $user = $comandoUser->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'users', retorna os dados
-        if ($user) {
-            return $user;
-        }
-
-        // Se não estiver na tabela 'users', verifica na tabela 'personal'
-        $comandoPersonal = $this->pdo->prepare("SELECT * FROM personal WHERE `name` = :name");
-        $comandoPersonal->bindValue(":name", $name);
-        $comandoPersonal->execute();
-        $personal = $comandoPersonal->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'personal', retorna os dados
-        if ($personal) {
-            return $personal;
-        }
-
-        // Se não estiver na tabela 'personal', verifica na tabela 'nutricionista'
-        $comandoNutricionista = $this->pdo->prepare("SELECT * FROM nutricionista WHERE `name` = :name");
-        $comandoNutricionista->bindValue(":name", $name);
-        $comandoNutricionista->execute();
-        $nutricionista = $comandoNutricionista->fetch(PDO::FETCH_ASSOC);
-
-        // Se o usuário estiver na tabela 'nutricionista', retorna os dados
-        if ($nutricionista) {
-            return $nutricionista;
-        }
-
-        // Se o usuário não estiver em nenhuma das tabelas, retorna falso
-        return false;
+        return $user;
     }
 
     public function ObterTodosUsuarios()
