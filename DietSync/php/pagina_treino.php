@@ -9,7 +9,7 @@ $treino = new TreinoController();
 if (isset($_GET['id'])) {
     $id_treino = $_GET['id'];
 
-    $dadosDoTreino = $treino->BuscarTreino($id_treino);
+    $dadosDoTreino = $treino->BuscarTreinoInfos($id_treino);
 
     if (!empty($dadosDoTreino)) {
         echo "<div class='container' id='main'>

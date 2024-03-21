@@ -28,6 +28,9 @@ class TreinoController
         $this->pdo->AdicionarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino, $user_id);
     }
 
+    public function ExcluirTreino($id_treino){
+        $this->pdo->ExcluirTreino($id_treino);
+    }
     public function Treinos($user_id)
     {
         $resultado = array();
@@ -35,10 +38,10 @@ class TreinoController
         return $resultado;
     }
 
-    public function BuscarTreino($id_treino)
+    public function BuscarTreinoInfos($id_treino)
     {
         $resultado = array();
-        $resultado = $this->pdo->BuscarTreino($id_treino);
+        $resultado = $this->pdo->BuscarTreinoInfos($id_treino);
         return $resultado;
     }
 }

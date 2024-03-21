@@ -27,6 +27,14 @@ class TreinoModel
         exit();
     }
 
+    public function ExcluirTreino($id_treino){
+        $comando = $this->pdo->prepare("DELETE FROM treino WHERE id = :id");
+        $comando->bindValue(":id", $id_treino);
+        $comando->execute();
+        header("Location: ../php/treinos.php");
+        exit();
+    }
+
     public function Treinos($user_id)
     {
         $resultado = array();
@@ -37,7 +45,7 @@ class TreinoModel
         return $resultado;
     }
 
-    public function BuscarTreino($id_treino)
+    public function BuscarTreinoInfos($id_treino)
 {
     $resultado = array();
     $comando = $this->pdo->prepare("SELECT * FROM treino WHERE id = :id");
