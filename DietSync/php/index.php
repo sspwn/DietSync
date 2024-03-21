@@ -75,7 +75,7 @@
         <button type="submit">Entrar</button>
       </form>
       <div class="login-card-footer">
-        Não tem uma conta? <a href="../php/registrar-usuario.php">Crie uma conta como usuário</a> ou <a href="../php/registrar-nutricionista.php">Crie uma conta como nutricionista</a> ou <a href="../php/registrar-personal.php">Crie uma conta como personal</a>
+        Não tem uma conta? <a href="../php/registrar-usuario.php">Crie uma conta como usuário</a>
       </div>
     </div>
   </div>

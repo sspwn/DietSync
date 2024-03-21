@@ -20,7 +20,7 @@
                 <div class="col-10">
                     <i class="btn btn-lg text-white bi bi-list" id="header-toggle"></i>
                 </div>
-                <div class="col-2 text-white">
+                <div class="col-2 text-white py-3">
                     <span><?php echo $_SESSION['name']; ?></span>
                 </div>
 

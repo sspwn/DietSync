@@ -74,7 +74,7 @@ $usuarios = $usuario->ObterTodosUsuarios();
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="alimentos">Alimentos</label>
+                <label for="alimentos">Alimentos (separados por vírgula)</label>
                 <textarea class="form-control" id="alimentos" name="alimentos" rows="3" placeholder="Digite os alimentos"></textarea>
             </div>
             <div class="form-group col-md-4">

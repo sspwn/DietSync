@@ -6,6 +6,7 @@ include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas-cont.class.php';
 $receita = new ReceitasController();
 
+$user_id = $_SESSION['id'];
 if (isset($_POST['nome_receita'])) {
     $nome_receita = $_POST['nome_receita'];
     $ingredientes_json = explode(',', $_POST['ingredientes']);
@@ -16,7 +17,7 @@ if (isset($_POST['nome_receita'])) {
     $carboidratos = $_POST['carboidratos'];
     $gordura = $_POST['gordura'];
     
-    $receita->RegistrarReceita($nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura);
+    $receita->RegistrarReceita($nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura, $user_id);
 }
 ?>
 

@@ -21,9 +21,9 @@ class UsuarioController
             exit();
         }
     }
-    public function CadastrarUser($nome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
+    public function CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
-        $this->pdo->CadastrarUser($nome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
+        $this->pdo->CadastrarUser($nome,$sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
     }
 
     public function VerificarLogin($email, $senha)

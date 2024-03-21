@@ -9,9 +9,9 @@ class ReceitasModel
         $this->pdo = $pdo;
     }
 
-    public function RegistrarReceita($nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura)
+    public function RegistrarReceita($nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura, $user_id)
     {
-        $comando = $this->pdo->prepare("INSERT INTO receita (nome_receita, ingredientes, modo_preparo, calorias,proteinas,carboidratos, gordura) VALUES(:nr, :ing, :md, :cal, :pro, :carb, :gor)");
+        $comando = $this->pdo->prepare("INSERT INTO receita (nome_receita, ingredientes, modo_preparo, calorias,proteinas,carboidratos, gordura, fk_id_user_receita) VALUES(:nr, :ing, :md, :cal, :pro, :carb, :gor, :fk_id_user_receita )");
 
         $comando->bindValue(":nr", $nome_receita);
         $comando->bindValue(":ing", $ingredientes);
@@ -20,6 +20,7 @@ class ReceitasModel
         $comando->bindValue(":pro", $proteinas);
         $comando->bindValue(":carb", $carboidratos);
         $comando->bindValue(":gor", $gordura);
+        $comando->bindValue(":gor", $user_id);
         $comando->execute();
         header("Location: ../php/receitas.php");
         exit();
@@ -37,9 +38,9 @@ class ReceitasModel
     {
         $resultado = array();
         $comando = $this->pdo->prepare("SELECT * FROM receita WHERE id_receitas = :id");
-        $comando->bindValue(":id",$id_receita);
-        $comando->execute(); 
+        $comando->bindValue(":id", $id_receita);
+        $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
-        return $resultado;	
+        return $resultado;
     }
 }

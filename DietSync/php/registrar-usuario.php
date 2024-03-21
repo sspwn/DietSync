@@ -12,7 +12,7 @@
 </head>
 <?php
 $page = 'registrar-user';
-require_once '../classes/controller/usuario.cont.class.php';
+require_once '../classes/controller/usuario-cont.class.php';
 $usuario = new UsuarioController();
 ?>
 
@@ -21,6 +21,7 @@ $usuario = new UsuarioController();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['name'])) {
             $nome = addslashes($_POST['name']);
+            $sobrenome = addslashes($_POST['surname']);
             $meta = addslashes($_POST['meta']);
             $sexo = addslashes($_POST['sexo']);
             $data_nasc = addslashes($_POST['data_nasc']);
@@ -29,8 +30,8 @@ $usuario = new UsuarioController();
             $email = addslashes($_POST['email']);
             $senha = password_hash(addslashes($_POST['password_confirmation']), PASSWORD_BCRYPT);
 
-            if (!empty($nome) && ($meta) && ($sexo) && ($data_nasc) && ($peso) && ($altura) && ($email) && ($senha)) {
-                $registrar_user = $usuario->CadastrarUser($nome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
+            if (!empty($nome) && !empty($sobrenome) && !empty($meta) && !empty($sexo) && !empty($data_nasc) && !empty($peso) && !empty($altura) && !empty($email) && !empty($senha)) {
+                $registrar_user = $usuario->CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
             }
         }
     }
@@ -50,11 +51,14 @@ $usuario = new UsuarioController();
                     <input type="text" placeholder="Nome" id="name" name="name" autofocus required>
                 </div>
                 <div class="form-item">
+                    <span class="form-item-icon material-symbols-rounded">person</span>
+                    <input type="text" placeholder="Sobrenome" id="surname" name="surname" required>
+                </div>
+                <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">star</span>
                     <input type="text" placeholder="Meta" id="meta" name="meta" required>
                 </div>
                 <div class="form-item">
-                    <span class="form-item-icon material-symbols-rounded">people</span>
                     <select id="sexo" name="sexo" class="form-select" required>
                         <option value="" disabled selected>Selecione o Sexo</option>
                         <option value="Fem">Feminino</option>
@@ -63,7 +67,6 @@ $usuario = new UsuarioController();
                 </div>
 
                 <div class="form-item">
-                    <span class="form-item-icon material-symbols-rounded">event</span>
                     <input type="date" placeholder="Data de Nascimento" id="data_nasc" name="data_nasc" required>
                 </div>
                 <div class="form-item">

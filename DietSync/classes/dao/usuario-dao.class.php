@@ -8,11 +8,12 @@ class UsuarioModel
         $this->pdo = $pdo;
     }
 
-    public function CadastrarUser($nome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
+    public function CadastrarUser($nome,$sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
-        $comando = $this->pdo->prepare("INSERT INTO users(name, meta, sexo, data_nasc, peso, altura, email, password) VALUES(:name, :meta, :sexo, :data, :peso, :altura, :email, :password)");
+        $comando = $this->pdo->prepare("INSERT INTO users(name, sobrenome, meta, sexo, data_nasc, peso, altura, email, password) VALUES(:name,:sobrenome, :meta, :sexo, :data, :peso, :altura, :email, :password)");
 
         $comando->bindValue(":name", $nome);
+        $comando->bindValue(":sobrenome", $sobrenome);
         $comando->bindValue(":meta", $meta);
         $comando->bindValue(":sexo", $sexo);
         $comando->bindValue(":data", $data_nasc);
