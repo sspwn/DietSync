@@ -31,6 +31,13 @@ class DietaModel
         exit();
     }
 
+    public function ExcluirDieta($id_dieta_excluir){
+        $comando = $this->pdo->prepare("DELETE FROM dietas WHERE id_dieta = :id");
+        $comando->bindValue(":id", $id_dieta_excluir);
+        $comando->execute();
+        header("Location: ../php/dieta.php");
+        exit();
+    }
     public function DadosDieta($user_id){
         $resultado = array();
         $comando = $this->pdo->prepare("SELECT * FROM dietas WHERE fk_id_usuario_dieta = :id ");

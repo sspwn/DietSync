@@ -20,7 +20,7 @@ class ReceitasModel
         $comando->bindValue(":pro", $proteinas);
         $comando->bindValue(":carb", $carboidratos);
         $comando->bindValue(":gor", $gordura);
-        $comando->bindValue(":gor", $user_id);
+        $comando->bindValue(":fk_id_user_receita", $user_id);
         $comando->execute();
         header("Location: ../php/receitas.php");
         exit();
@@ -30,6 +30,16 @@ class ReceitasModel
     {
         $resultado = array();
         $comando = $this->pdo->query("SELECT nome_receita,id_receitas FROM receita");
+        $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+    public function ReceitasPorUsuario($userId)
+    {
+        $resultado = array();
+        $comando = $this->pdo->prepare("SELECT nome_receita, id_receitas FROM receita WHERE fk_id_user_receita = :id");
+        $comando->bindValue(":id", $userId);
+        $comando->execute();
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }

@@ -13,6 +13,11 @@ if (isset($_SESSION['meta']) && !empty($_SESSION['meta'])) {
     exit();
 }
 
+if(isset($_GET['id_excluir'])){
+    $id_dieta_excluir = addslashes($_GET['id_excluir']);
+    $dietaController->ExcluirDieta($id_dieta_excluir);
+}
+
 $user_id = $_SESSION['id'];
 $dadosDieta = $dietaController->DadosDieta($user_id);
 ?>
@@ -25,6 +30,8 @@ $dadosDieta = $dietaController->DadosDieta($user_id);
                 <a href="#<?= $dieta['refeicao'] ?>" class="list-group-item list-group-item-action" data-toggle="collapse">
                     <?= $dieta['refeicao'] ?>
                 </a>
+                  <!-- Adicionando o botão de exclusão -->
+                  <a href="dieta.php?id_excluir=<?= $dieta['id_dieta'] ?>" class="btn btn-danger btn-sm ml-2">Excluir</a>
             </strong>
             <div class="collapse w-100" id="<?= $dieta['refeicao'] ?>">
                 <div class="card card-body">

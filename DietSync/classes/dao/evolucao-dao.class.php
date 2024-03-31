@@ -23,6 +23,14 @@ class EvolucaoModel
         exit();
     }
 
+    public function ExcluirEvolucao($id_excluir_evolucao){
+        $comando = $this->pdo->prepare("DELETE FROM evolucaos WHERE id = :id");
+        $comando->bindValue(":id", $id_excluir_evolucao);
+        $comando->execute();
+        header("Location: ../php/evolucao.php");
+        exit();
+    }
+
     public function dadosEvolucao($user_id){
         $resultado = array();
         $comando = $this->pdo->prepare("SELECT * FROM evolucaos WHERE fk_id_evolucaos = :id ORDER BY `data`");

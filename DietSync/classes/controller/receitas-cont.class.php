@@ -33,6 +33,13 @@ class ReceitasController
         return $resultado;
     }
 
+    public function ReceitasPorUsuario($userId)
+    {
+        $resultado = array();
+        $resultado = $this->pdo->ReceitasPorUsuario($userId);
+        return $resultado;
+    }
+
     public function BuscarReceita($id_receita)
     {
         $resultado = array();

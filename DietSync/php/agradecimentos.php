@@ -8,7 +8,7 @@ include '../php/includes/menu.inc.php';
 <div class="container" id="main">
     <div class="container">
         <div class="text-center">
-            <img src="../img/GIF.gif" alt="logo dietsync" class="w-50">
+            <img src="../img/GIF.gif" alt="logo dietsync" class="w-75">
         </div>
         
         <div class="container my-5 text-center">

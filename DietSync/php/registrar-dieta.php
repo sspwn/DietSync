@@ -35,13 +35,17 @@ $usuarios = $usuario->ObterTodosUsuarios();
 
     <form method="post">
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="nome_dieta">Nome da Dieta</label>
                 <input type="text" class="form-control" id="nome_dieta" name="nome_dieta" placeholder="Digite o nome da dieta">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="tipo_dieta">Tipo de Dieta</label>
                 <input type="text" class="form-control" id="tipo_dieta" name="tipo_dieta" placeholder="Digite o tipo de dieta">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="quantidade">Quantidade</label>
+                <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Digite a quantidade">
             </div>
         </div>
         <div class="form-row">
@@ -72,15 +76,9 @@ $usuarios = $usuario->ObterTodosUsuarios();
                 <input type="text" class="form-control" id="refeicao" name="refeicao" placeholder="Digite a refeição">
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="alimentos">Alimentos (separados por vírgula)</label>
-                <textarea class="form-control" id="alimentos" name="alimentos" rows="3" placeholder="Digite os alimentos"></textarea>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="quantidade">Quantidade</label>
-                <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Digite a quantidade">
-            </div>
+        <div class="form-group">
+            <label for="alimentos">Alimentos (separados por vírgula)</label>
+            <textarea class="form-control" id="alimentos" name="alimentos" rows="3" placeholder="Digite os alimentos"></textarea>
         </div>
         <div class="form-group">
             <label for="observacoes">Observações</label>

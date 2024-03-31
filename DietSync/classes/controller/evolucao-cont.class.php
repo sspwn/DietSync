@@ -25,6 +25,12 @@ class EvolucaoController
         $this->pdo->RegistrarMedicao($data, $peso, $altura, $cintura, $user_id);
     }
 
+    public function ExcluirEvolucao($id_excluir_evolucao)
+    {
+        $this->pdo->ExcluirEvolucao($id_excluir_evolucao);
+    }
+
+    
     public function dadosEvolucao($user_id)
     {
         $resultado = array();
