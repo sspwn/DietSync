@@ -39,4 +39,9 @@ class ReceitasController
         $resultado = $this->pdo->BuscarReceita($id_receita);
         return $resultado;
     }
+
+    public function ExcluirReceita($id_receita)
+    {
+        $this->pdo->ExcluirReceita($id_receita);
+    }
 }

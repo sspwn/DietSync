@@ -6,11 +6,15 @@ include '../php/includes/menu.inc.php';
 require_once '../classes/controller/receitas-cont.class.php';
 $receitas = new ReceitasController();
 $userId = $_SESSION['id'];
+if(isset($_GET['id_excluir_receita'])){
+    $id_receita= addslashes($_GET['id_excluir_receita']);
+    $receitas->ExcluirReceita($id_receita);
+}
 ?>
 
 <div class="container" id="main">
     <h2>Receitas Disponíveis</h2>
-    <div class="container-fluid row">
+    <div class="row">
         <div class="col-lg-5 col-md-12 col-sm-12">
             <!-- Formulário de filtro e pesquisa -->
             <form method="GET" action="">
@@ -25,17 +29,6 @@ $userId = $_SESSION['id'];
                 </select>
                 <button type="submit" class="btn btn-success mb-2">Aplicar Filtro</button>
         </div>
-        <!-- <div class="col-lg-7 col-md-12 col-sm-12">
-            <div class="row">
-                <div class="col-10">
-                    <label for="pesquisar_nome" class="">lupa</label>
-                    <input type="text" id="pesquisar_nome" name="pesquisar_nome" class="form-control" value="">
-                </div>
-                <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Aplicar Filtro</button>
-                </div>
-            </div>
-        </div> -->
     </div>
     </form>
 
@@ -65,17 +58,26 @@ $userId = $_SESSION['id'];
         <tbody>
             <?php foreach ($listaReceitas as $receita) : ?>
                 <tr>
-                    <td><?php echo $receita['nome_receita']; ?></td>
-                    <td>
-                        <a href="pagina_receita.php?id_receitas=<?php echo $receita['id_receitas']; ?>" class="btn btn-success">Ver Detalhes</a>
-                    </td>
-                    <?php $filtroReceita = isset($_GET['filtroReceita']) ? $_GET['filtroReceita'] : 'todas';
-                    if ($filtroReceita === 'MinhasReceitas') {
-                        echo '
-                    <td>
-                        <button class="btn btn-danger"><i class="bi bi-x-circle"></i></button>
-                    </td>';
-                    } ?>
+    <td><?php echo $receita['nome_receita']; ?></td>
+    <td>
+        <a href="pagina_receita.php?id_receitas=<?php echo $receita['id_receitas']; ?>" class="btn btn-success">Ver Detalhes</a>
+    </td>
+    <?php 
+        $filtroReceita = isset($_GET['filtroReceita']) ? $_GET['filtroReceita'] : 'todas';
+        if ($filtroReceita === 'MinhasReceitas') {
+            echo '
+            <td>
+                <form method="get" action="">
+                    <input type="hidden" name="id_excluir_receita" value="' . $receita['id_receitas'] . '">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                </form>
+            </td>';
+        } 
+    ?>
+</tr>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -25,9 +25,17 @@ class UsuarioController
         $user = $this->pdo->VerificarLogin($email, $senha);
         // Verifica se o usuário foi encontrado e se a senha está correta
         if ($user && password_verify($senha, $user['password'])) {
+            // Chama a função Contador do DAO
+            $this->pdo->Contador();
             return $user; // Retorna os dados do usuário
         }
     }
+
+    public function TotalAcesso()
+    {
+        return $this->pdo->TotalAcesso();
+    }
+
 
     public function ObterNomeUsuario($email)
     {
@@ -52,6 +60,6 @@ class UsuarioController
 
     public function AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
     {
-       $this->pdo->AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email);
+        $this->pdo->AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email);
     }
 }

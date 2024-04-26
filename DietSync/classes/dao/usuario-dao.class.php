@@ -87,4 +87,27 @@ class UsuarioModel
         header("Location: {$_SERVER['PHP_SELF']}");
         exit();
     }
+
+    public function Contador()
+    {
+        // Consulta o valor atual do contador
+        $comando = $this->pdo->prepare("SELECT contador FROM contador");
+        $comando->execute();
+        $ultimo_contador = $comando->fetch(PDO::FETCH_ASSOC);
+
+        // Incrementa o valor do contador em 1
+        $novo_contador = $ultimo_contador['contador'] + 1;
+
+        // Atualiza o último registro na tabela 'contador' com o novo valor do contador
+        $comando = $this->pdo->prepare("UPDATE contador SET contador = :novo_contador");
+        $comando->bindValue(":novo_contador", $novo_contador);
+        $comando->execute();
+    }
+
+    public function TotalAcesso()
+    {
+        $comando = $this->pdo->prepare("SELECT contador FROM contador");
+        $comando->execute();
+        return $comando->fetch(PDO::FETCH_ASSOC);
+    }
 }

@@ -12,10 +12,9 @@
 
 <body>
   <?php
-  $titulo = "Login";
-  $page = 'login';
   require_once '../classes/controller/usuario-cont.class.php';
   $usuario = new UsuarioController();
+  $contador = $usuario->TotalAcesso();
 
   // Inicia a sessão
   session_start();
@@ -70,11 +69,12 @@
             <input type="checkbox" id="rememberMeCheckbox" name="remember" checked>
             <label for="rememberMeCheckbox">Lembrar de mim</label>
           </div>
-          <a href="#">Esqueci minha senha!</a>
+          <a href="../php/esquecisenha.php">Esqueci minha senha!</a>
         </div>
         <button type="submit">Entrar</button>
       </form>
       <div class="login-card-footer">
+      <p>Total de acessos: <?php echo $contador['contador']; ?></p>
         Não tem uma conta? <a href="../php/registrar-usuario.php">Crie uma conta como usuário</a>
       </div>
     </div>

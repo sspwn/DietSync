@@ -53,4 +53,14 @@ class ReceitasModel
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
     }
+
+    public function ExcluirReceita($id_receita)
+    {
+        $comando = $this->pdo->prepare("DELETE FROM receita WHERE id_receitas = :id");
+        $comando->bindValue(":id", $id_receita);
+        $comando->execute();
+        header("Location: ../php/receitas.php");
+        exit();
+    }
+    
 }

@@ -59,6 +59,7 @@ $usuario = new UsuarioController();
                     <input type="text" placeholder="Meta" id="meta" name="meta" required>
                 </div>
                 <div class="form-item">
+                    <label for="">Selecione o Sexo</label>
                     <select id="sexo" name="sexo" class="form-select" required>
                         <option value="" disabled selected>Selecione o Sexo</option>
                         <option value="Fem">Feminino</option>
@@ -67,6 +68,7 @@ $usuario = new UsuarioController();
                 </div>
 
                 <div class="form-item">
+                    <label for="">Data Nascimento</label>
                     <input type="date" placeholder="Data de Nascimento" id="data_nasc" name="data_nasc" required>
                 </div>
                 <div class="form-item">
