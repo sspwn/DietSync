@@ -22,6 +22,7 @@ if(isset($_GET['id_treino_excluir'])){
                 <th>Nome da Receita</th>
                 <th>Detalhes</th>
                 <th>Excluir</th>
+                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,11 @@ if(isset($_GET['id_treino_excluir'])){
                             </button>
                         </a>
                     </td>
+                    <td> <a href="registrar-treino.php?id_treino_editar=<?php echo $treino['id']; ?>">
+                            <button class="btn btn-success">
+                            <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

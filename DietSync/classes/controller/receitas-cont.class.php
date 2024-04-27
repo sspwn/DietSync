@@ -40,6 +40,11 @@ class ReceitasController
         return $resultado;
     }
 
+    public function EditarReceita($id_receita, $nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura)
+    {
+        $this->pdo->EditarReceita($id_receita, $nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura);
+    }
+
     public function ExcluirReceita($id_receita)
     {
         $this->pdo->ExcluirReceita($id_receita);

@@ -54,6 +54,31 @@ class ReceitasModel
         return $resultado;
     }
 
+    public function EditarReceita($id_receita, $nome_receita, $ingredientes, $modo_preparo, $calorias, $proteinas, $carboidratos, $gordura)
+    {
+        $comando = $this->pdo->prepare("UPDATE receita SET 
+    nome_receita = :nr, 
+    ingredientes = :ing, 
+    modo_preparo = :md, 
+    calorias = :cal, 
+    proteinas = :pro, 
+    carboidratos = :carb, 
+    gordura = :gor 
+    WHERE id_receitas = :id AND :id");
+
+        $comando->bindValue(":id", $id_receita);
+        $comando->bindValue(":nr", $nome_receita);
+        $comando->bindValue(":ing", $ingredientes);
+        $comando->bindValue(":md", $modo_preparo);
+        $comando->bindValue(":cal", $calorias);
+        $comando->bindValue(":pro", $proteinas);
+        $comando->bindValue(":carb", $carboidratos);
+        $comando->bindValue(":gor", $gordura);
+        $comando->execute();
+        header("Location: ../php/receitas.php");
+        exit();
+    }
+
     public function ExcluirReceita($id_receita)
     {
         $comando = $this->pdo->prepare("DELETE FROM receita WHERE id_receitas = :id");
@@ -62,5 +87,4 @@ class ReceitasModel
         header("Location: ../php/receitas.php");
         exit();
     }
-    
 }

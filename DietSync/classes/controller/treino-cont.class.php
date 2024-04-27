@@ -20,6 +20,10 @@ class TreinoController
     {
         $this->pdo->AdicionarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino, $user_id);
     }
+    public function EditarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino, $user_id)
+    {
+        $this->pdo->EditarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino, $user_id);
+    }
 
     public function ExcluirTreino($id_treino){
         $this->pdo->ExcluirTreino($id_treino);
