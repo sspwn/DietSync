@@ -26,12 +26,13 @@ $dadosDieta = $dietaController->DadosDieta($user_id);
     <h2>Plano de Refeições do Dia</h2>
     <?php foreach ($dadosDieta as $dieta) : ?>
         <div class="list-group mt-4">
-            <strong class="text-uppercase">
+            <strong>
                 <a href="#<?= $dieta['refeicao'] ?>" class="list-group-item list-group-item-action" data-toggle="collapse">
                     <?= $dieta['refeicao'] ?>
                 </a>
                   <!-- Adicionando o botão de exclusão -->
                   <a href="dieta.php?id_excluir=<?= $dieta['id_dieta'] ?>" class="btn btn-danger btn-sm ml-2">Excluir</a>
+                  <a href="Registrar-dieta.php?id_editar_dieta=<?= $dieta['id_dieta'] ?>" class="btn btn-success btn-sm ml-2">Editar Dieta</a>
             </strong>
             <div class="collapse w-100" id="<?= $dieta['refeicao'] ?>">
                 <div class="card card-body">

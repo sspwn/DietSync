@@ -22,6 +22,17 @@ class DietaController
         $this->pdo->AdicionarDietaDao($nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes, $user_id);
     }
 
+    public function DadosEditarDieta($id_editar_dieta)
+    {
+        $resultado = array();
+        $resultado = $this->pdo->DadosEditarDieta($id_editar_dieta);
+        return $resultado;
+    }
+    
+    public function EditarDieta($id_editar_dieta,$nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes){
+        $this->pdo->EditarDieta($id_editar_dieta,$nome_dieta, $tipo_dieta, $calorias, $proteinas, $carboidratos, $gorduras, $data_dieta, $refeicao, $alimentos, $quantidade, $observacoes);
+    }
+
     public function ExcluirDieta($id_dieta_excluir){
         $this->pdo->ExcluirDieta($id_dieta_excluir);
     }

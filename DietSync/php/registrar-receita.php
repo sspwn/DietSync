@@ -86,10 +86,6 @@ if (isset($_GET['id_receitas_editar'])) {
             <label for="gordura" class="form-label">Gordura</label>
             <input type="number" class="form-control" id="gordura" name="gordura" value="<?php echo isset($gordura) ? $gordura : ''; ?>">
         </div>
-
-        <button type="submit" class="btn btn-success mb-5" value="cadastrar">Registrar</button>
-        <?php if (isset($_GET['id_receitas_editar'])) : ?>
-            <button type="submit" class="btn btn-primary mb-5" name="editar_receita">Editar Receita</button>
-        <?php endif; ?>
+        <button type="submit" class="btn btn-success mb-5"><?php echo isset($_GET['id_receitas_editar']) ? 'Editar' : 'Registrar'; ?></button>
     </form>
 </div>

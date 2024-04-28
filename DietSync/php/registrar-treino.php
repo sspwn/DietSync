@@ -6,7 +6,6 @@ include '../php/includes/menu.inc.php';
 require_once '../classes/controller/treino-cont.class.php';
 require_once '../classes/controller/usuario-cont.class.php';
 $treino = new TreinoController();
-$usuario = new UsuarioController();
 
 $user_id = $_SESSION['id'];
 
@@ -51,8 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $treino->AdicionarTreino($data, $tipo, $exercicios, $repeticoes, $series, $objetivo, $duracao, $frequencia, $nome_treino, $user_id);
     }
 }
-
-$usuarios = $usuario->ObterTodosUsuarios();
 ?>
 
 <div class="container" id="main">
@@ -108,19 +105,8 @@ $usuarios = $usuario->ObterTodosUsuarios();
             </div>
         </div>
         <button type="submit" class="btn btn-success mb-5"><?php echo isset($_GET['id_treino_editar']) ? 'Editar' : 'Registrar'; ?></button>
-        <?php if (isset($_GET['id_treino_editar'])) : ?>
-            <button type="submit" class="btn btn-warning mb-5">Editar</button>
-        <?php endif; ?>
     </form>
 </div>
-
-<?php
-include '../php/includes/footer.inc.php'
-?>
-
-</body>
-
-</html>
 
 <?php
 include '../php/includes/footer.inc.php'
