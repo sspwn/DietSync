@@ -14,6 +14,10 @@ class UsuarioController
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->pdo = new UsuarioModel($pdo);
     }
+
+    public function VerificarEmail($email){
+        return $this->pdo->VerificarEmail($email);
+    }
     public function CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
         $this->pdo->CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
@@ -36,7 +40,6 @@ class UsuarioController
         return $this->pdo->TotalAcesso();
     }
 
-
     public function ObterNomeUsuario($email)
     {
         // Verifica na tabela 'users'
@@ -44,6 +47,7 @@ class UsuarioController
         // Se o usuário estiver na tabela 'users', retorna os dados
         return $user;
     }
+    
     public function ObterUsuario($id_user)
     {
         // Verifica na tabela 'users'
@@ -51,15 +55,16 @@ class UsuarioController
         return $user;
     }
 
-    public function ObterTodosUsuarios()
-    {
-        $resultado = array();
-        $resultado = $this->pdo->ObterTodosUsuarios();
-        return $resultado;
-    }
-
     public function AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
     {
         $this->pdo->AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email);
+    }
+
+    public function AlterarSenha($id_user, $novaSenha){
+        $this->pdo->AlterarSenha($id_user, $novaSenha);
+    }
+
+    public function BuscarDadosAlterarSenha($email, $data_nasc){
+        return $this->pdo->BuscarDadosAlterarSenha($email, $data_nasc);
     }
 }

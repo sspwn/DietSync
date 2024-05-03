@@ -69,7 +69,7 @@
             <input type="checkbox" id="rememberMeCheckbox" name="remember" checked>
             <label for="rememberMeCheckbox">Lembrar de mim</label>
           </div>
-          <a href="../php/esquecisenha.php">Esqueci minha senha!</a>
+          <a href="../php/recuperar-senha.php">Esqueci minha senha!</a>
         </div>
         <button type="submit">Entrar</button>
       </form>

@@ -8,6 +8,24 @@ class UsuarioModel
         $this->pdo = $pdo;
     }
 
+    public function VerificarEmail($email)
+    {
+        $comando = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
+        $comando->bindValue(":email", $email);
+        $comando->execute();
+
+        // Obtém o resultado da consulta
+        $result = $comando->fetchColumn();
+
+        // Verifica se o resultado é maior que zero (o email existe)
+        if ($result > 0) {
+            return true; // Email existe
+        } else {
+            return false; // Email não existe
+        }
+    }
+
+
     public function CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha)
     {
         $comando = $this->pdo->prepare("INSERT INTO users(name, sobrenome, meta, sexo, data_nasc, peso, altura, email, password) VALUES(:name,:sobrenome, :meta, :sexo, :data, :peso, :altura, :email, :password)");
@@ -60,16 +78,6 @@ class UsuarioModel
         return $user;
     }
 
-    public function ObterTodosUsuarios()
-    {
-        $resultado = array();
-        $comando = $this->pdo->prepare("SELECT id,`name` FROM users");
-        $comando->execute();
-        $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
-        return $resultado;
-    }
-
-
     public function AtualizarUsuario($id, $nome, $meta, $sexo, $data_nasc, $peso, $altura, $email)
     {
         $comando = $this->pdo->prepare("UPDATE users SET name = :name, meta = :meta, sexo = :sexo, data_nasc = :data, peso = :peso, altura = :altura, email = :email WHERE id = :id");
@@ -82,6 +90,17 @@ class UsuarioModel
         $comando->bindValue(":peso", $peso);
         $comando->bindValue(":altura", $altura);
         $comando->bindValue(":email", $email);
+        $comando->execute();
+        // Redireciona para a mesma página após a atualização
+        header("Location: {$_SERVER['PHP_SELF']}");
+        exit();
+    }
+
+    public function AlterarSenha($id_user, $novaSenha)
+    {
+        $comando = $this->pdo->prepare("UPDATE users  SET `password` = :novasenha WHERE id = :id");
+        $comando->bindValue(":novasenha", $novaSenha);
+        $comando->bindValue(":id", $id_user);
         $comando->execute();
         // Redireciona para a mesma página após a atualização
         header("Location: {$_SERVER['PHP_SELF']}");
@@ -103,6 +122,15 @@ class UsuarioModel
         $comando->bindValue(":novo_contador", $novo_contador);
         $comando->execute();
     }
+
+    public function BuscarDadosAlterarSenha($email, $data_nasc){
+        $comando = $this->pdo->prepare("SELECT id FROM users WHERE email = :email AND data_nasc = :data_nasc");
+        $comando->bindValue(":email",$email);
+        $comando->bindValue(":data_nasc",$data_nasc);
+        $comando->execute();
+        $resultado = $comando->fetch(PDO::FETCH_ASSOC);
+        return $resultado;
+    } 
 
     public function TotalAcesso()
     {

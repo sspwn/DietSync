@@ -31,7 +31,13 @@ $usuario = new UsuarioController();
             $senha = password_hash(addslashes($_POST['password_confirmation']), PASSWORD_BCRYPT);
 
             if (!empty($nome) && !empty($sobrenome) && !empty($meta) && !empty($sexo) && !empty($data_nasc) && !empty($peso) && !empty($altura) && !empty($email) && !empty($senha)) {
-                $registrar_user = $usuario->CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
+                if ($usuario->VerificarEmail($email)) {
+                    // Se o email já existe, exibe uma mensagem de erro
+                    echo "<script>alert('O email já está cadastrado. Por favor, escolha outro email.');</script>";
+                } else {
+                    // Se o email não existe, proceda com o registro do usuário
+                    $registrar_user = $usuario->CadastrarUser($nome, $sobrenome, $meta, $sexo, $data_nasc, $peso, $altura, $email, $senha);
+                }
             }
         }
     }
